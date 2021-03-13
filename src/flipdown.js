@@ -188,25 +188,25 @@ class FlipDown {
                 (this.epoch - this.now) / 86400
             ).toString().length;
         }
-        var dayRotorCount = this.daysremaining <= 2 ? 2 : this.daysremaining;
+        const dayRotorCount = this.daysremaining <= 2 ? 2 : this.daysremaining;
 
         // Create and store rotors
-        for (var i = 0; i < dayRotorCount + 6; i++) {
+        for (let i = 0; i < dayRotorCount + 6; i++) {
             this.rotors.push(this._createRotor(0));
         }
 
         // Create day rotor group
-        var dayRotors = [];
-        for (var i = 0; i < dayRotorCount; i++) {
+        const dayRotors = [];
+        for (let i = 0; i < dayRotorCount; i++) {
             dayRotors.push(this.rotors[i]);
         }
         this.element.appendChild(this._createRotorGroup(dayRotors, 0));
 
         // Create other rotor groups
-        var count = dayRotorCount;
-        for (var i = 0; i < 3; i++) {
-            var otherRotors = [];
-            for (var j = 0; j < 2; j++) {
+        let count = dayRotorCount;
+        for (let i = 0; i < 3; i++) {
+            const otherRotors = [];
+            for (let j = 0; j < 2; j++) {
                 otherRotors.push(this.rotors[count]);
                 count++;
             }
@@ -241,9 +241,9 @@ class FlipDown {
      * @param {array} rotors - A set of rotors
      **/
     _createRotorGroup(rotors, rotorIndex) {
-        var rotorGroup = document.createElement("div");
+        const rotorGroup = document.createElement("div");
         rotorGroup.className = "rotor-group";
-        var dayRotorGroupHeading = document.createElement("div");
+        const dayRotorGroupHeading = document.createElement("div");
         dayRotorGroupHeading.className = "rotor-group-heading";
         dayRotorGroupHeading.setAttribute(
             "data-before",
@@ -261,12 +261,12 @@ class FlipDown {
      * @param {number} v - Initial rotor value
      **/
     _createRotor(v = 0) {
-        var rotor = document.createElement("div");
-        var rotorLeaf = document.createElement("div");
-        var rotorLeafRear = document.createElement("figure");
-        var rotorLeafFront = document.createElement("figure");
-        var rotorTop = document.createElement("div");
-        var rotorBottom = document.createElement("div");
+        const rotor = document.createElement("div");
+        const rotorLeaf = document.createElement("div");
+        const rotorLeafRear = document.createElement("figure");
+        const rotorLeafFront = document.createElement("figure");
+        const rotorTop = document.createElement("div");
+        const rotorBottom = document.createElement("div");
         rotor.className = "rotor";
         rotorLeaf.className = "rotor-leaf";
         rotorLeafRear.className = "rotor-leaf-rear";
@@ -291,7 +291,7 @@ class FlipDown {
         this.now = this._getTime();
 
         // Between now and epoch
-        var diff = this.epoch - this.now <= 0 ? 0 : this.epoch - this.now;
+        let diff = this.epoch - this.now <= 0 ? 0 : this.epoch - this.now;
 
         // Days remaining
         this.clockValues.d = Math.floor(diff / 86400);
@@ -353,7 +353,7 @@ class FlipDown {
 
         function rotorTopFlip() {
             this.rotorTop.forEach((el, i) => {
-                if (el.textContent != this.clockValuesAsString[i]) {
+                if (el.textContent !== this.clockValuesAsString[i]) {
                     el.textContent = this.clockValuesAsString[i];
                 }
             });
@@ -361,7 +361,7 @@ class FlipDown {
 
         function rotorLeafRearFlip() {
             this.rotorLeafRear.forEach((el, i) => {
-                if (el.textContent != this.clockValuesAsString[i]) {
+                if (el.textContent !== this.clockValuesAsString[i]) {
                     el.textContent = this.clockValuesAsString[i];
                     el.parentElement.classList.add("flipped");
                     var flip = setInterval(
