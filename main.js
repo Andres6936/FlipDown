@@ -1,4 +1,5 @@
 import './style.css'
+import {FlipDown} from "./src/flipdown.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
