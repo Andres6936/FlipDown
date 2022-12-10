@@ -1,3 +1,5 @@
+import './style.css'
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // Unix timestamp (in seconds) to count down to
@@ -6,13 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set up FlipDown
   var flipdown = new FlipDown(twoDaysFromNow)
 
-    // Start the countdown
-    .start()
+      // Start the countdown
+      .start()
 
-    // Do something when the countdown ends
-    .ifEnded(() => {
-      console.log('The countdown has ended!');
-    });
+      // Do something when the countdown ends
+      .ifEnded(() => {
+        console.log('The countdown has ended!');
+      });
 
   // Toggle theme
   var interval = setInterval(() => {
