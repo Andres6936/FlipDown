@@ -1,4 +1,6 @@
-<span style="text-align:center;display:block;width:100%;"><img src="http://i.imgur.com/UtbIc4S.png" style="width:75%" title="Example of FlipDown" style="width: 500px;text-align:center"></span>
+<span style="text-align:center;display:block;width:100%;">
+    <img src="http://i.imgur.com/UtbIc4S.png" style="width:75%" title="Example of FlipDown" style="width: 500px;text-align:center">
+</span>
 
 # FlipDown
 
