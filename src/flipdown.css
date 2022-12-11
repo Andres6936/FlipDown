@@ -1,3 +1,8 @@
+:root {
+    --flipdown-color-dark: #151515;
+    --flipdown-color-dark-rotor: #202020;
+}
+
 @media (prefers-color-scheme: dark) {
     .flipdown {
         font-family: sans-serif;
@@ -12,7 +17,7 @@
     /* Delimeters */
     .flipdown .rotor-group:nth-child(n+2):nth-child(-n+3):before,
     .flipdown .rotor-group:nth-child(n+2):nth-child(-n+3):after {
-        background-color: #151515;
+        background-color: var(--flipdown-color-dark);
     }
 
     /* Rotor tops */
@@ -20,19 +25,19 @@
     .flipdown .rotor-top,
     .flipdown .rotor-leaf-front {
         color: #FFFFFF;
-        background-color: #151515;
+        background-color: var(--flipdown-color-dark-rotor);
     }
 
     /* Rotor bottoms */
     .flipdown .rotor-bottom,
     .flipdown .rotor-leaf-rear {
         color: #EFEFEF;
-        background-color: #202020;
+        background-color: var(--flipdown-color-dark-rotor);
     }
 
     /* Hinge */
     .flipdown .rotor:after {
-        border-top: solid 1px #151515;
+        border-top: solid 1px var(--flipdown-color-dark);
     }
 
 }
