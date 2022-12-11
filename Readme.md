@@ -1,21 +1,16 @@
-<span style="text-align:center;display:block;width:100%;">
-    <img src="http://i.imgur.com/UtbIc4S.png" style="width:75%" title="Example of FlipDown" style="width: 500px;text-align:center">
-</span>
+![Showcase](./docs/Showcase.png)
 
 # FlipDown
 
-⏰ A lightweight and performant flip styled countdown clock.
-
-![NPM Version](https://img.shields.io/npm/v/flipdown?style=flat-square)
-![NPM Downloads](https://img.shields.io/npm/dt/flipdown?style=flat-square)
+A lightweight and performant flip styled countdown clock.
 
 ## Features
 
-- 💡 Lightweight - No jQuery! <11KB minified bundle
-- ⚡ Performant - Animations powered by CSS transitions
-- 📱 Responsive - Works great on screens of all sizes
-- 🎨 Themeable - Choose from built-in themes, or add your own
-- 🌍 i18n - Customisable headings for your language
+- Lightweight - No jQuery! <11KB minified bundle
+- Performant - Animations powered by CSS transitions
+- Responsive - Works great on screens of all sizes
+- Themeable - Choose from built-in themes, or add your own
+- i18n - Customisable headings for your language
 
 ## Example
 
@@ -59,7 +54,7 @@ new FlipDown(1593561600, "eventStart").start();
 
 FlipDown comes with 2 themes as standard:
 
-- dark [default]
+- dark
 - light
 
 To change the theme, you can supply the `theme` property in the `opt` object in the constructor with the theme name as a string:
