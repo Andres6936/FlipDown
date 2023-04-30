@@ -1,5 +1,7 @@
-import {html, LitElement, TemplateResult} from "lit";
+import {html, css, LitElement, TemplateResult} from "lit";
 import {customElement, property, state, queryAll} from 'lit/decorators.js';
+
+import './RotorGroup.ts'
 
 type Theme = "dark" | "light"
 type Heading = "Days" | "Hours" | "Minutes" | "Seconds"
@@ -44,17 +46,46 @@ function pad(n: number | string, len: number): string {
     return representation.length < len ? pad("0" + representation, len) : representation;
 }
 
-/**
- * @description Add multiple children to an element
- **/
-function appendChildren(parent: HTMLElement, children: HTMLElement[]) {
-    children.forEach((el) => {
-        parent.appendChild(el);
-    });
-}
-
 @customElement('adan-flipdown')
 export class Flipdown extends LitElement {
+    static styles = css`
+        :root {
+            --flipdown-color-dark: #151515;
+            --flipdown-color-dark-rotor: #202020;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .flipdown {
+                font-family: sans-serif;
+                font-weight: bold;
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+
+        /* Font styles */
+            .flipdown {
+                font-family: sans-serif;
+                font-weight: bold;
+            }
+        }
+
+        .flipdown {
+            overflow: visible;
+            width: 510px;
+            height: 110px;
+        }
+
+        @media (max-width: 550px) {
+
+            .flipdown {
+                width: 312px;
+                height: 70px;
+            }
+        }
+
+    `
+
     // UTS to count down to
     @property()
     epoch!: number
@@ -79,17 +110,17 @@ export class Flipdown extends LitElement {
     @state()
     rotors: TemplateResult[] = [];
 
-    @queryAll("#rotor-leaf-front")
-    rotorLeafFront = [];
+    @queryAll(".rotor-leaf-front")
+    rotorLeafFront!: NodeListOf<HTMLDivElement>;
 
-    @queryAll("#rotor-leaf-rear")
-    rotorLeafRear = [];
+    @queryAll(".rotor-leaf-rear")
+    rotorLeafRear!: NodeListOf<HTMLDivElement>;
 
-    @queryAll("#rotor-top")
-    rotorTop = []
+    @queryAll(".rotor-top")
+    rotorTop!: NodeListOf<HTMLDivElement>;
 
-    @queryAll("#rotor-bottom")
-    rotorBottom = []
+    @queryAll(".rotor-bottom")
+    rotorBottom!: NodeListOf<HTMLDivElement>;
 
     @state()
     rotorTops = [];
@@ -244,24 +275,7 @@ export class Flipdown extends LitElement {
      **/
     _createRotor(v: number = 0): TemplateResult {
         return html`
-            <div class="rotor">
-                <div class="rotor-leaf">
-                    <figure class="rotor-leaf-rear">
-                        ${v}
-                    </figure>
-
-                    <figure class="rotor-leaf-front">
-                    </figure/>
-                </div>
-
-                <div class="rotor-top">
-                    ${v}
-                </div>
-
-                <div class="rotor-bottom">
-                    ${v}
-                </div>
-            </div>
+            <adan-rotor value="${v}"></adan-rotor>
         `
     }
 
@@ -385,7 +399,8 @@ export class Flipdown extends LitElement {
 
         // Create and store rotors
         for (let i = 0; i < dayRotorCount + 6; i++) {
-            this.rotors = [...this.rotors, this._createRotor(0)];
+            this.rotors = [...this.rotors, html`
+                <adan-rotor value="0"></adan-rotor>`];
         }
 
         // Create day rotor group
@@ -394,7 +409,7 @@ export class Flipdown extends LitElement {
             dayRotors.push(this.rotors[i]);
         }
 
-        const rotors = []
+        const rotors: TemplateResult[] = []
         // Create other rotor groups
         let count = dayRotorCount;
         for (let i = 0; i < 3; i++) {
@@ -411,12 +426,11 @@ export class Flipdown extends LitElement {
         this._updateClockValues(true);
 
         return html`
-            <div class="flipdown__theme-${this.opts.theme}">
-                <div class="rotor-group">
-                    <div class="rotor-group-heading" data-before="${this.opts.headings[0]}"></div>
-                    ${dayRotors}
-                </div>
-                ${rotors}
+            <div class="flipdown flipdown__theme-${this.opts.theme}">
+                <adan-rotor-group title="Years"></adan-rotor-group>
+                <adan-rotor-group title="Days"></adan-rotor-group>
+                <adan-rotor-group title="Minutess"></adan-rotor-group>
+                <adan-rotor-group title="Seconds"></adan-rotor-group>
             </div>
         `;
     }
