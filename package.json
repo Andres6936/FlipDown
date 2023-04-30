@@ -18,8 +18,11 @@
     "url": "https://github.com/PButcher/flipdown/issues"
   },
   "homepage": "https://github.com/PButcher/flipdown#readme",
-  "dependencies": {},
+  "dependencies": {
+    "lit": "^2.7.3"
+  },
   "devDependencies": {
+    "typescript": "^5.0.4",
     "vite": "4.0.0"
   }
 }
