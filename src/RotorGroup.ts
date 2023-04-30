@@ -124,12 +124,15 @@ class RotorGroup extends LitElement {
     @property()
     title!: string
 
+    @property({type: Number})
+    value!: number
+
     public render() {
         return html`
             <div class="rotor-group">
                 <div class="rotor-group-heading" data-before="${this.title}"></div>
-                <adan-rotor value="0"></adan-rotor>
-                <adan-rotor value="0"></adan-rotor>
+                <adan-rotor value="${this.value}"></adan-rotor>
+                <adan-rotor value="${this.value}"></adan-rotor>
             </div>
         `
     }

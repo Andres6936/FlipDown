@@ -374,10 +374,10 @@ export class Flipdown extends LitElement {
 
         return html`
             <div class="flipdown flipdown__theme-${this.opts.theme}">
-                <adan-rotor-group title="Years"></adan-rotor-group>
-                <adan-rotor-group title="Days"></adan-rotor-group>
-                <adan-rotor-group title="Minutes"></adan-rotor-group>
-                <adan-rotor-group title="Seconds"></adan-rotor-group>
+                <adan-rotor-group title="Years" value="0"></adan-rotor-group>
+                <adan-rotor-group title="Days" value="1"></adan-rotor-group>
+                <adan-rotor-group title="Minutes" value="2"></adan-rotor-group>
+                <adan-rotor-group title="Seconds" value="3"></adan-rotor-group>
             </div>
         `;
     }
