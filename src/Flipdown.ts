@@ -252,34 +252,6 @@ export class Flipdown extends LitElement {
     }
 
     /**
-     * @name _createRotorGroup
-     * @description Add rotors to the DOM
-     * @author PButcher
-     * @param {array} rotors - A set of rotors
-     * @param {number} rotorIndex - The indice of rotor
-     **/
-    _createRotorGroup(rotors: TemplateResult[], rotorIndex: number): TemplateResult {
-        return html`
-            <div class="rotor-group">
-                <div class="rotor-group-heading" data-before="${this.opts.headings[rotorIndex]}"></div>
-                ${rotors}
-            </div>
-        `
-    }
-
-    /**
-     * @name _createRotor
-     * @description Create a rotor DOM element
-     * @author PButcher
-     * @param {number} v - Initial rotor value
-     **/
-    _createRotor(v: number = 0): TemplateResult {
-        return html`
-            <adan-rotor value="${v}"></adan-rotor>
-        `
-    }
-
-    /**
      * @name _tick
      * @description Calculate current tick
      * @author PButcher
@@ -395,31 +367,6 @@ export class Flipdown extends LitElement {
                 (this.epoch - this.now) / 86400
             ).toString().length;
         }
-        const dayRotorCount: number = this.daysremaining <= 2 ? 2 : this.daysremaining;
-
-        // Create and store rotors
-        for (let i = 0; i < dayRotorCount + 6; i++) {
-            this.rotors = [...this.rotors, html`
-                <adan-rotor value="0"></adan-rotor>`];
-        }
-
-        // Create day rotor group
-        const dayRotors: TemplateResult[] = [];
-        for (let i = 0; i < dayRotorCount; i++) {
-            dayRotors.push(this.rotors[i]);
-        }
-
-        const rotors: TemplateResult[] = []
-        // Create other rotor groups
-        let count = dayRotorCount;
-        for (let i = 0; i < 3; i++) {
-            const otherRotors = [];
-            for (let j = 0; j < 2; j++) {
-                otherRotors.push(this.rotors[count]);
-                count++;
-            }
-            rotors.push(this._createRotorGroup(otherRotors, i + 1));
-        }
 
         // Set initial values;
         this._tick();
@@ -429,7 +376,7 @@ export class Flipdown extends LitElement {
             <div class="flipdown flipdown__theme-${this.opts.theme}">
                 <adan-rotor-group title="Years"></adan-rotor-group>
                 <adan-rotor-group title="Days"></adan-rotor-group>
-                <adan-rotor-group title="Minutess"></adan-rotor-group>
+                <adan-rotor-group title="Minutes"></adan-rotor-group>
                 <adan-rotor-group title="Seconds"></adan-rotor-group>
             </div>
         `;
