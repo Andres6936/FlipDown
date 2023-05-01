@@ -1,5 +1,5 @@
 import {css, html, LitElement, PropertyValues} from "lit";
-import {customElement, property, query} from "lit/decorators.js";
+import {customElement, property, query, state} from "lit/decorators.js";
 
 @customElement('adan-rotor')
 class Rotor extends LitElement {
@@ -167,28 +167,38 @@ class Rotor extends LitElement {
     }
     `
 
-   @query(".rotor-leaf")
-   rotorLeaft!: HTMLDivElement
+    @query(".rotor-leaf")
+    rotorLeaft!: HTMLDivElement
+
+   // Used for display the animation of change of value, where the old
+   // value is replaced for the new value
+    @state()
+    prevValue!: number
 
     @property({type: Number})
     value!: number
 
     protected willUpdate(_changedProperties: PropertyValues<this>) {
-        if (this.rotorLeaft) {
-           this.rotorLeaft.classList.add('flipped')
-           setTimeout(() => this.rotorLeaft.classList.remove('flipped'), 500)
+        if (this.rotorLeaft && _changedProperties.has('value')) {
+           // Set the previous value for display the animation, the change of
+           // this state in this method not trigger a update.
+            this.prevValue = _changedProperties.get('value');
+            // Start the animation
+            this.rotorLeaft.classList.remove('flipped')
+            setTimeout(() => this.rotorLeaft.classList.add('flipped'), 500)
         }
     }
 
     public render() {
         return html`
             <div class="rotor">
-                <div class="rotor-leaf">
+                <div class="rotor-leaf flipped">
                     <figure class="rotor-leaf-rear">
                         ${this.value}
                     </figure>
 
                     <figure class="rotor-leaf-front">
+                        ${this.prevValue}
                     </figure/>
                 </div>
 
@@ -197,7 +207,7 @@ class Rotor extends LitElement {
                 </div>
 
                 <div class="rotor-bottom">
-                    ${this.value}
+                    ${this.prevValue}
                 </div>
             </div>
         `
