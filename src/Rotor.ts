@@ -173,7 +173,7 @@ class Rotor extends LitElement {
     public render() {
         return html`
             <div class="rotor">
-                <div class="rotor-leaf">
+                <div class="rotor-leaf flipped">
                     <figure class="rotor-leaf-rear">
                         ${this.value}
                     </figure>
