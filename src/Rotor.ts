@@ -1,5 +1,5 @@
-import {css, html, LitElement} from "lit";
-import {customElement, property} from "lit/decorators.js";
+import {css, html, LitElement, PropertyValues} from "lit";
+import {customElement, property, query} from "lit/decorators.js";
 
 @customElement('adan-rotor')
 class Rotor extends LitElement {
@@ -167,13 +167,23 @@ class Rotor extends LitElement {
     }
     `
 
+   @query(".rotor-leaf")
+   rotorLeaft!: HTMLDivElement
+
     @property({type: Number})
     value!: number
+
+    protected willUpdate(_changedProperties: PropertyValues<this>) {
+        if (this.rotorLeaft) {
+           this.rotorLeaft.classList.add('flipped')
+           setTimeout(() => this.rotorLeaft.classList.remove('flipped'), 500)
+        }
+    }
 
     public render() {
         return html`
             <div class="rotor">
-                <div class="rotor-leaf flipped">
+                <div class="rotor-leaf">
                     <figure class="rotor-leaf-rear">
                         ${this.value}
                     </figure>
