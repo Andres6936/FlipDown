@@ -155,6 +155,18 @@ export class Flipdown extends LitElement {
         s: "0"
     };
 
+    @state()
+    days!: number
+
+    @state()
+    hours!: number
+
+    @state()
+    minutes!: number
+
+    @state()
+    seconds!: number
+
     // Clock values as array
     @state()
     clockValuesAsString: string[] = [];
@@ -177,7 +189,7 @@ export class Flipdown extends LitElement {
 
         // Start the countdown
         // Set up the countdown interval, it is called each second
-        this.countdown = setInterval(this._tick.bind(this), 1000);
+        this._tick();
     }
 
     /**
@@ -256,7 +268,7 @@ export class Flipdown extends LitElement {
      * @description Calculate current tick
      * @author PButcher
      **/
-    _tick() {
+    private _tick() {
         // Get time now
         this.now = this._getTime();
 
@@ -264,25 +276,27 @@ export class Flipdown extends LitElement {
         let diff = this.epoch - this.now <= 0 ? 0 : this.epoch - this.now;
 
         // Days remaining
-        this.clockValues.d = Math.floor(diff / 86400);
-        diff -= this.clockValues.d * 86400;
+        this.days = Math.floor(diff / 86400);
+        diff -= this.days * 86400;
 
         // Hours remaining
-        this.clockValues.h = Math.floor(diff / 3600);
-        diff -= this.clockValues.h * 3600;
+        this.hours = Math.floor(diff / 3600);
+        diff -= this.hours * 3600;
 
         // Minutes remaining
-        this.clockValues.m = Math.floor(diff / 60);
-        diff -= this.clockValues.m * 60;
+        this.minutes = Math.floor(diff / 60);
+        diff -= this.minutes * 60;
 
         // Seconds remaining
-        this.clockValues.s = Math.floor(diff);
+        this.seconds = Math.floor(diff);
 
         // Update clock values
         this._updateClockValues();
 
         // Has the countdown ended?
         this._hasCountdownEnded();
+
+        setTimeout(this._tick.bind(this), 1_000);
     }
 
     /**
@@ -368,16 +382,14 @@ export class Flipdown extends LitElement {
             ).toString().length;
         }
 
-        // Set initial values;
-        this._tick();
         this._updateClockValues(true);
 
         return html`
             <div class="flipdown flipdown__theme-${this.opts.theme}">
-                <adan-rotor-group title="Years" value="0"></adan-rotor-group>
-                <adan-rotor-group title="Days" value="1"></adan-rotor-group>
-                <adan-rotor-group title="Minutes" value="2"></adan-rotor-group>
-                <adan-rotor-group title="Seconds" value="3"></adan-rotor-group>
+                <adan-rotor-group title="Days" value="${pad(this.days, 2)}"></adan-rotor-group>
+                <adan-rotor-group title="Hours" value="${pad(this.hours, 2)}"></adan-rotor-group>
+                <adan-rotor-group title="Minutes" value="${pad(this.minutes, 2)}"></adan-rotor-group>
+                <adan-rotor-group title="Seconds" value="${pad(this.seconds, 2)}"></adan-rotor-group>
             </div>
         `;
     }
