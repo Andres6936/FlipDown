@@ -34,6 +34,12 @@ class RotorGroup extends LitElement {
             }
         }
     
+         .flex {
+            display: flex;
+            justify-content: center;
+            column-gap: 0.3rem;
+         }
+
          .rotor-group {
             position: relative;
             float: left;
@@ -96,13 +102,15 @@ class RotorGroup extends LitElement {
     value!: string
 
     public render() {
-       const [slot1, slot2] = this.value.split('')
+        const [slot1, slot2] = this.value.split('')
 
         return html`
             <div class="rotor-group">
                 <div class="rotor-group-heading" data-before="${this.title}"></div>
-                <adan-rotor value="${slot1}"></adan-rotor>
-                <adan-rotor value="${slot2}"></adan-rotor>
+                <div class="flex">
+                    <adan-rotor value="${slot1}"></adan-rotor>
+                    <adan-rotor value="${slot2}"></adan-rotor>
+                </div>
             </div>
         `
     }
