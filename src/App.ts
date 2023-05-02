@@ -127,42 +127,6 @@ class App extends LitElement {
             background-color: #FFFFFF;
         }
     }
-    
-    @media (max-width: 550px) {
-        .example {
-            width: 100%;
-            height: 362px;
-        }
-    
-        .example h1 {
-            font-size: 2.5em;
-        }
-    
-        .example p {
-            margin-bottom: 25px;
-        }
-    
-        .example .buttons {
-            width: 100%;
-            margin-top: 25px;
-            text-align: center;
-            display: block;
-        }
-    
-        .example .buttons p,
-        .example .buttons a {
-            float: none;
-            margin: 0 auto;
-        }
-    
-        .example .buttons p {
-            padding-right: 0;
-        }
-    
-        .example .buttons a {
-            display: inline-block;
-        }
-    }
     `
 
     render() {
