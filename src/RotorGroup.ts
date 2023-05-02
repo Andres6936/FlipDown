@@ -86,38 +86,6 @@ class RotorGroup extends LitElement {
             height: 10px;
             border-radius: 50%;
         }
-    
-    @media (max-width: 550px) {
-     .rotor-group {
-                padding-right: 20px;
-            }
-
-             .rotor-group:last-child {
-                padding-right: 0;
-            }
-
-             .rotor-group-heading:before {
-                font-size: 0.8rem;
-                height: 20px;
-                line-height: 20px;
-            }
-
-             .rotor-group:nth-child(n+2):nth-child(-n+3):before,
-             .rotor-group:nth-child(n+2):nth-child(-n+3):after {
-                left: 69px;
-            }
-
-             .rotor-group:nth-child(n+2):nth-child(-n+3):before {
-                bottom: 13px;
-                height: 8px;
-                width: 8px;
-            }
-
-             .rotor-group:nth-child(n+2):nth-child(-n+3):after {
-                bottom: 29px;
-                height: 8px;
-                width: 8px;
-            }
     }
     `
 

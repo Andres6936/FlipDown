@@ -75,15 +75,6 @@ export class Flipdown extends LitElement {
             width: 510px;
             height: 110px;
         }
-
-        @media (max-width: 550px) {
-
-            .flipdown {
-                width: 312px;
-                height: 70px;
-            }
-        }
-
     `
 
     // UTS to count down to
