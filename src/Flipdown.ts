@@ -97,55 +97,6 @@ export class Flipdown extends LitElement {
     @state()
     hasEndedCallback: Function | null = null;
 
-    // Rotor DOM elements
-    @state()
-    rotors: TemplateResult[] = [];
-
-    @queryAll(".rotor-leaf-front")
-    rotorLeafFront!: NodeListOf<HTMLDivElement>;
-
-    @queryAll(".rotor-leaf-rear")
-    rotorLeafRear!: NodeListOf<HTMLDivElement>;
-
-    @queryAll(".rotor-top")
-    rotorTop!: NodeListOf<HTMLDivElement>;
-
-    @queryAll(".rotor-bottom")
-    rotorBottom!: NodeListOf<HTMLDivElement>;
-
-    @state()
-    rotorTops = [];
-
-    @state()
-    rotorBottoms = [];
-
-    // The IntervalID of interval used for update the component or null if the
-    // internval not is set
-    @state()
-    countdown: number | null = null;
-
-    // Number of days remaining
-    @state()
-    daysRemaining = 0;
-
-    // Clock values as numbers
-    @state()
-    clockValues: Clock = {
-        d: 0,
-        h: 0,
-        m: 0,
-        s: 0
-    };
-
-    // Clock values as strings
-    @state()
-    clockStrings: ClockDisplay = {
-        d: "0",
-        h: "0",
-        m: "0",
-        s: "0"
-    };
-
     @state()
     days!: number
 
@@ -157,13 +108,6 @@ export class Flipdown extends LitElement {
 
     @state()
     seconds!: number
-
-    // Clock values as array
-    @state()
-    clockValuesAsString: string[] = [];
-
-    @state()
-    prevClockValuesAsString: string[] = [];
 
     @state()
     daysremaining: number = 0
@@ -281,86 +225,10 @@ export class Flipdown extends LitElement {
         // Seconds remaining
         this.seconds = Math.floor(diff);
 
-        // Update clock values
-        this._updateClockValues();
-
         // Has the countdown ended?
         this._hasCountdownEnded();
 
         setTimeout(this._tick.bind(this), 1_000);
-    }
-
-    /**
-     * @name _updateClockValues
-     * @description Update the clock face values
-     * @author PButcher
-     * @param {boolean} init - True if calling for initialisation
-     **/
-    _updateClockValues(init = false) {
-        // Build clock value strings
-        this.clockStrings.d = pad(this.clockValues.d, 2);
-        this.clockStrings.h = pad(this.clockValues.h, 2);
-        this.clockStrings.m = pad(this.clockValues.m, 2);
-        this.clockStrings.s = pad(this.clockValues.s, 2);
-
-        // Concat clock value strings
-        this.clockValuesAsString = (
-            this.clockStrings.d +
-            this.clockStrings.h +
-            this.clockStrings.m +
-            this.clockStrings.s
-        ).split("");
-
-        // Update rotor values
-        // Note that the faces which are initially visible are:
-        // - rotorLeafFront (top half of current rotor)
-        // - rotorBottom (bottom half of current rotor)
-        // Note that the faces which are initially hidden are:
-        // - rotorTop (top half of next rotor)
-        // - rotorLeafRear (bottom half of next rotor)
-//        this.rotorLeafFront.forEach((el, i) => {
-//            el.textContent = this.prevClockValuesAsString[i];
-//        });
-//
-//        this.rotorBottom.forEach((el, i) => {
-//            el.textContent = this.prevClockValuesAsString[i];
-//        });
-//
-//        function rotorTopFlip() {
-//            this.rotorTop.forEach((el, i) => {
-//                if (el.textContent !== this.clockValuesAsString[i]) {
-//                    el.textContent = this.clockValuesAsString[i];
-//                }
-//            });
-//        }
-//
-//        function rotorLeafRearFlip() {
-//            this.rotorLeafRear.forEach((el, i) => {
-//                if (el.textContent !== this.clockValuesAsString[i]) {
-//                    el.textContent = this.clockValuesAsString[i];
-//                    el.parentElement.classList.add("flipped");
-//                    var flip = setInterval(
-//                        function () {
-//                            el.parentElement.classList.remove("flipped");
-//                            clearInterval(flip);
-//                        }.bind(this),
-//                        500
-//                    );
-//                }
-//            });
-//        }
-
-        // Init
-        if (!init) {
-//            setTimeout(rotorTopFlip.bind(this), 500);
-//            setTimeout(rotorLeafRearFlip.bind(this), 500);
-        } else {
-//            rotorTopFlip.call(this);
-//            rotorLeafRearFlip.call(this);
-        }
-
-        // Save a copy of clock values for next tick
-        this.prevClockValuesAsString = this.clockValuesAsString;
     }
 
     public render() {
@@ -372,8 +240,6 @@ export class Flipdown extends LitElement {
                 (this.epoch - this.now) / 86400
             ).toString().length;
         }
-
-        this._updateClockValues(true);
 
         return html`
             <div class="flipdown flipdown__theme-${this.opts.theme}">
