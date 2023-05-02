@@ -6,7 +6,7 @@ import './Rotor.ts'
 @customElement("adan-rotor-group")
 class RotorGroup extends LitElement {
     static styles = css`
-    @media (prefers-color-scheme: dark) {
+      @media (prefers-color-scheme: dark) {
 
             /* Rotor group headings */
              .rotor-group-heading:before {
@@ -34,7 +34,7 @@ class RotorGroup extends LitElement {
             }
         }
     
-     .rotor-group {
+         .rotor-group {
             position: relative;
             float: left;
             padding-right: 30px;
