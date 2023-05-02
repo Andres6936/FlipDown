@@ -71,6 +71,9 @@ export class Flipdown extends LitElement {
         }
 
         .flipdown {
+            display: flex;
+            column-gap: 1rem;
+            justify-content: center;
             overflow: visible;
             width: 510px;
             height: 110px;
