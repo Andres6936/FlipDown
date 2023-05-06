@@ -11,28 +11,6 @@ interface Options {
     headings: Heading[],
 }
 
-interface Clock {
-    // Days
-    d: number,
-    // Hours
-    h: number,
-    // Minutes
-    m: number,
-    // Seconds
-    s: number,
-}
-
-interface ClockDisplay {
-    // Days
-    d: string,
-    // Hours
-    h: string,
-    // Minutes
-    m: string,
-    // Seconds
-    s: string,
-}
-
 
 /**
  * @name pad
