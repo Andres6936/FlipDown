@@ -2,6 +2,7 @@ import {LitElement, html, css} from "lit";
 import {customElement, property, state, queryAll} from 'lit/decorators.js';
 
 import './Flipdown.ts'
+import './components/Button.ts'
 
 @customElement("showcase-app")
 class App extends LitElement {
@@ -21,7 +22,7 @@ class App extends LitElement {
     body,
     .example h1,
     .example p,
-    .example .button {
+    .example {
         transition: all .2s ease-in-out;
     }
     
@@ -53,53 +54,6 @@ class App extends LitElement {
         margin-bottom: 35px;
     }
     
-    .example .buttons {
-        width: 100%;
-        height: 50px;
-        margin: 50px auto 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-    
-    .example .buttons p {
-        height: 50px;
-        line-height: 50px;
-        font-weight: 400;
-        padding: 0 25px 0 0;
-        margin: 0;
-    }
-    
-    .example .button {
-        display: inline-block;
-        height: 50px;
-        box-sizing: border-box;
-        line-height: 46px;
-        text-decoration: none;
-        color: #333;
-        padding: 0 20px;
-        border: solid 2px #333;
-        border-radius: 4px;
-        text-transform: uppercase;
-        font-weight: 700;
-        transition: all .2s ease-in-out;
-    }
-    
-    .example .button i {
-        margin-right: 5px;
-    }
-    
-    @media (prefers-color-scheme: light) {
-        body .buttons p {
-            color: #000000;
-        }
-    
-        .example .button:hover {
-            background-color: #333;
-            color: #FFF;
-        }
-    }
-    
     @media (prefers-color-scheme: dark) {
         body {
             background-color: #151515;
@@ -111,20 +65,6 @@ class App extends LitElement {
     
         body .example p {
             color: #FFFFFF;
-        }
-    
-        body .buttons p {
-            color: #FFFFFF;
-        }
-    
-        body .buttons .button {
-            color: #FFFFFF;
-            border-color: #FFFFFF;
-        }
-    
-        body .buttons .button:hover {
-            color: #151515;
-            background-color: #FFFFFF;
         }
     }
     `
@@ -138,11 +78,7 @@ class App extends LitElement {
                 <h1>FlipDown.js</h1>
                 <p>A lightweight and performant flip styled countdown clock</p>
                 <adan-flipdown epoch="${twoDaysFromNow}"></adan-flipdown>
-                <div class="buttons">
-                    <p>Version: <span id="ver">3.0.2</span> (&lt;11KB minified)</p>
-                    <a href="https://github.com/PButcher/flipdown#flipdown" class="button"><i
-                        class="fab fa-github"></i> <span>Get started</span></a>
-                </div>
+                <showcase-button></showcase-button>
             </div>
         `
     }
