@@ -77,7 +77,7 @@ class Button extends LitElement {
         return html`
             <div class="buttons">
                 <p>Version: <span id="ver">3.0.2</span> (&lt;11KB minified)</p>
-                <a href="https://github.com/PButcher/flipdown#flipdown" class="button"><i
+                <a href="https://github.com/Andres6936/FlipDown" class="button"><i
                     class="fab fa-github"></i> <span>Get started</span></a>
             </div>
         `
