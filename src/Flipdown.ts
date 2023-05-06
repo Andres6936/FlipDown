@@ -63,7 +63,7 @@ export class Flipdown extends LitElement {
 
     // Time at instantiation in seconds
     @state()
-    now: number = this._getTime();
+    now: number;
 
     // UTS passed to FlipDown is in the past
     @state()
@@ -98,6 +98,7 @@ export class Flipdown extends LitElement {
         // Print Version
         console.log(`FlipDown ${this.version} (Theme: ${this.opts.theme})`);
 
+        this.now = this._getTime();
         // Start the countdown
         // Set up the countdown interval, it is called each second
         this._tick();
@@ -208,15 +209,6 @@ export class Flipdown extends LitElement {
     }
 
     public render() {
-        // Check whether countdown has ended and calculate how many digits the day counter needs
-        if (this._hasCountdownEnded()) {
-            this.daysremaining = 0;
-        } else {
-            this.daysremaining = Math.floor(
-                (this.epoch - this.now) / 86400
-            ).toString().length;
-        }
-
         return html`
             <div class="flipdown flipdown__theme-${this.opts.theme}">
                 <adan-rotor-group title="Days" value="${pad(this.days, 2)}"></adan-rotor-group>
