@@ -10,19 +10,19 @@ class Rotor extends LitElement {
              .rotor-top,
              .rotor-leaf-front {
                 color: #FFFFFF;
-                background-color: var(--flipdown-color-dark-rotor);
+                background-color: #202020;
             }
 
             /* Rotor bottoms */
              .rotor-bottom,
              .rotor-leaf-rear {
                 color: #EFEFEF;
-                background-color: var(--flipdown-color-dark-rotor);
+                background-color: #202020;
             }
 
             /* Hinge */
              .rotor:after {
-                border-top: solid 1px var(--flipdown-color-dark);
+                border-top: solid 1px #151515;
             }
     }
     
@@ -130,41 +130,6 @@ class Rotor extends LitElement {
             height: 40px;
             border-radius: 0 0 4px 4px;
         }
-    
-    @media (max-width: 550px) {
-     .rotor {
-                font-size: 2.2rem;
-                margin-right: 3px;
-            }
-
-             .rotor,
-             .rotor-leaf,
-             .rotor-leaf-front,
-             .rotor-leaf-rear,
-             .rotor-top,
-             .rotor-bottom,
-             .rotor:after {
-                width: 30px;
-            }
-    
-     .rotor-leaf-front,
-             .rotor-top {
-                line-height: 50px;
-            }
-
-             .rotor-leaf,
-             .rotor {
-                height: 50px;
-            }
-
-             .rotor-leaf-front,
-             .rotor-leaf-rear,
-             .rotor-top,
-             .rotor-bottom,
-             .rotor:after {
-                height: 25px;
-            }
-    }
     `
 
     @query(".rotor-leaf")
