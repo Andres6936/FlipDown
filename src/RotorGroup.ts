@@ -16,7 +16,7 @@ class RotorGroup extends LitElement {
             /* Delimeters */
              .rotor-group:nth-child(n+2):nth-child(-n+3):before,
              .rotor-group:nth-child(n+2):nth-child(-n+3):after {
-                background-color: var(--flipdown-color-dark);
+                background-color:  #151515;
             }
         }
 

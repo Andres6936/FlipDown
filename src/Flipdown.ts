@@ -27,11 +27,6 @@ function pad(n: number | string, len: number): string {
 @customElement('adan-flipdown')
 export class Flipdown extends LitElement {
     static styles = css`
-        :root {
-            --flipdown-color-dark: #151515;
-            --flipdown-color-dark-rotor: #202020;
-        }
-
         @media (prefers-color-scheme: dark) {
             .flipdown {
                 font-family: sans-serif;
