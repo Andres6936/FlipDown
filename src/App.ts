@@ -7,19 +7,6 @@ import './components/Button.ts'
 @customElement("showcase-app")
 class App extends LitElement {
     static styles = css`
-    html {
-        height: 100%;
-    }
-    
-    body {
-        margin: 0;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        align-content: space-around;
-    }
-    
-    body,
     .example h1,
     .example p,
     .example {
@@ -55,15 +42,11 @@ class App extends LitElement {
     }
     
     @media (prefers-color-scheme: dark) {
-        body {
-            background-color: #151515;
-        }
-    
-        body .example h1 {
+        .example h1 {
             color: #FFFFFF;
         }
     
-        body .example p {
+        .example p {
             color: #FFFFFF;
         }
     }
