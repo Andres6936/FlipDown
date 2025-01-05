@@ -13,7 +13,7 @@ export function RotorGroup({title, value}: Props) {
 
     return (
         <div className="rotor-group">
-            <div className="rotor-group-heading"/>
+            <div className="rotor-group-heading" data-before={title}/>
             <div className="flex">
                 <Rotor value={slot1}/>
                 <Rotor value={slot2}/>
