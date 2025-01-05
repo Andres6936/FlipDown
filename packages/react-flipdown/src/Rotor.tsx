@@ -7,20 +7,23 @@ type Props = {
 }
 
 export function Rotor({value}: Props) {
-    const refRotor = useRef<HTMLDivElement>(null);
-    const [prevValue, setPrevValue] = useState('0');
+    const rotorLeafRef = useRef<HTMLDivElement>(null);
+    const [prevValue, setPrevValue] = useState(value);
 
     useEffect(() => {
-        if (refRotor.current) {
-            setPrevValue(value);
-            refRotor.current.classList.remove('flipped');
-            setTimeout(() => refRotor.current?.classList.add('flipped'), 500);
+        if (rotorLeafRef.current) {
+            // Animate the flipping transition
+            rotorLeafRef.current.classList.remove("flipped");
+            setTimeout(() => {
+                setPrevValue(value);
+                rotorLeafRef.current?.classList.add("flipped");
+            }, 500);
         }
     }, [value, setPrevValue]);
 
     return (
         <div className="rotor">
-            <div ref={refRotor} className="rotor-leaf flipped">
+            <div ref={rotorLeafRef} className="rotor-leaf flipped">
                 <figure className="rotor-leaf-rear">
                     {value}
                 </figure>
