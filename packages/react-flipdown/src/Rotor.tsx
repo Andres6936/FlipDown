@@ -4,22 +4,21 @@ import './Rotor.css'
 
 type Props = {
     value: string;
+    prevValue: number,
 }
 
-export function Rotor({value}: Props) {
+export function Rotor({value, prevValue}: Props) {
     const rotorLeafRef = useRef<HTMLDivElement>(null);
-    const [prevValue, setPrevValue] = useState(value);
 
     useEffect(() => {
         if (rotorLeafRef.current) {
             // Animate the flipping transition
             rotorLeafRef.current.classList.remove("flipped");
             setTimeout(() => {
-                setPrevValue(value);
                 rotorLeafRef.current?.classList.add("flipped");
             }, 500);
         }
-    }, [value, setPrevValue]);
+    }, [value]);
 
     return (
         <div className="rotor">
