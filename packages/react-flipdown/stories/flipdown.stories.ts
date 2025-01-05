@@ -8,5 +8,8 @@ const meta = {
 export default meta;
 
 export const Primary = {
-    args: {},
+    args: {
+        // Unix timestamp (in seconds) to count down to
+        epoch: (new Date().getTime() / 1000) + (86400 * 2) + 1
+    },
 };
