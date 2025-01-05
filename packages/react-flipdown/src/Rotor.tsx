@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 import './Rotor.css'
 
@@ -7,11 +7,20 @@ type Props = {
 }
 
 export function Rotor({value}: Props) {
-    const [prevValue, setPrevValue] = useState(value);
+    const refRotor = useRef<HTMLDivElement>(null);
+    const [prevValue, setPrevValue] = useState('0');
+
+    useEffect(() => {
+        if (refRotor.current) {
+            setPrevValue(value);
+            refRotor.current.classList.remove('flipped');
+            setTimeout(() => refRotor.current?.classList.add('flipped'), 500);
+        }
+    }, [value, setPrevValue]);
 
     return (
         <div className="rotor">
-            <div className="rotor-leaf flipped">
+            <div ref={refRotor} className="rotor-leaf flipped">
                 <figure className="rotor-leaf-rear">
                     {value}
                 </figure>
