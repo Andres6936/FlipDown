@@ -18,7 +18,7 @@
     "check": "biome check --write",
     "dev": "rslib build --watch",
     "format": "biome format --write",
-    "test": "vitest run"
+    "storybook": "storybook dev"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.3",
@@ -26,16 +26,12 @@
     "@rsbuild/plugin-react": "^1.1.0",
     "@rslib/core": "^0.2.2",
     "@storybook/addon-essentials": "^8.4.7",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.1.0",
     "@types/react": "^18 || ^19",
-    "jsdom": "^25.0.1",
     "react": "^18 || ^19",
     "storybook": "^8.4.7",
     "storybook-addon-rslib": "^0.1.7",
     "storybook-react-rsbuild": "^0.1.7",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "typescript": "^5.7.2"
   },
   "peerDependencies": {
     "react": "^18 || ^19",
