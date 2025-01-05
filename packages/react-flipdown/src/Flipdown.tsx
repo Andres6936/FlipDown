@@ -20,6 +20,9 @@ export function Flipdown({epoch, ifEnded}: Props) {
 
     // Has the countdown ended?
     const hasCountdownEnded = useCallback(() => {
+        // Avoid recalculate if ended
+        if (countdownEnded) return true;
+
         // Countdown has ended
         if (epoch - new Date().getTime() / 1000 <= 0) {
             setCountdownEnded(true);
