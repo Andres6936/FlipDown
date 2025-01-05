@@ -6,6 +6,7 @@ export default defineConfig({
     entry: {
       index: ['./src/**'],
     },
+    exclude: ['./src/**/*.stories.{js|jsx|ts|tsx}'],
   },
   lib: [
     {
