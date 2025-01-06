@@ -12,6 +12,5 @@
     "baseUrl": ".",
     "rootDir": "src"
   },
-  "include": ["**/*"],
   "exclude": ["**/*.stories.ts" ,"*.config.ts"]
 }
