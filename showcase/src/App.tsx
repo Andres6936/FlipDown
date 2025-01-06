@@ -1,4 +1,5 @@
 import {ButtonGithub} from "./ButtonGithub";
+import {Flipdown} from "react-flipdown";
 
 import './App.css';
 
@@ -10,6 +11,7 @@ const App = () => {
         <div className="example">
             <h1>FlipDown.js</h1>
             <p>A lightweight and performant flip styled countdown clock</p>
+            <Flipdown epoch={twoDaysFromNow}/>
             <ButtonGithub/>
         </div>
     );
