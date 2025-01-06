@@ -4,7 +4,7 @@ import { defineConfig } from '@rslib/core';
 export default defineConfig({
   source: {
     entry: {
-      index: ['./src/**', "!**/*.stories.ts"],
+      index: ['./src/**', "!**/*.stories.(ts|tsx|js|jsx)"],
     },
   },
   lib: [
