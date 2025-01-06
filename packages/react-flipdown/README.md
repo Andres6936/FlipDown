@@ -5,7 +5,7 @@
 Install the dependencies:
 
 ```bash
-pnpm install
+bun install
 ```
 
 ## Get Started
@@ -13,11 +13,18 @@ pnpm install
 Build the library:
 
 ```bash
-pnpm build
+bun build
 ```
 
 Build the library in watch mode:
 
 ```bash
-pnpm dev
+bun dev
 ```
+
+### Optimized Bundle Size
+
+This library is specifically designed to generate code that is highly optimized to minimize the final
+bundle size. Files with the `.stories.ts` extension, which are used exclusively by Storybook for
+documentation and testing purposes, will be excluded from the final production bundle as they are
+not required for the application's functionality.
