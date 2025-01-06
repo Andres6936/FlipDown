@@ -8,7 +8,10 @@
     "isolatedModules": true,
     "resolveJsonModule": true,
     "moduleResolution": "bundler",
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "baseUrl": ".",
+    "rootDir": "src"
   },
-  "include": ["src"]
+  "include": ["**/*"],
+  "exclude": ["**/*.stories.ts" ,"*.config.ts"]
 }
