@@ -7,6 +7,9 @@
   "keywords": ["react", "library", "component", "flipdown", "clock", "countdown"],
   "author": "Joan Andrés",
   "license": "MIT",
+  "scripts": {
+    "build": "turbo build"
+  },
   "overrides": {
     "react-dom": "^19"
   },
