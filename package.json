@@ -9,5 +9,8 @@
   "license": "MIT",
   "overrides": {
     "react-dom": "^19"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3"
   }
 }
