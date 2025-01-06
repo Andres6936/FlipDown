@@ -22,7 +22,13 @@ Build the library in watch mode:
 bun dev
 ```
 
-### Optimized Bundle Size
+## Monorepo Structure
+
+This package is part of a monorepo. All commands, such as building or installing dependencies, 
+should be executed from  the root of the project to ensure proper functionality and 
+dependency management.
+
+## Optimized Bundle Size
 
 This library is specifically designed to generate code that is highly optimized to minimize the final
 bundle size. Files with the `.stories.ts` extension, which are used exclusively by Storybook for
