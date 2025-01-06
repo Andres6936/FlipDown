@@ -7,7 +7,7 @@ const twoDaysFromNow = (new Date().getTime() / 1000) + (86400 * 2) + 1;
 
 const App = () => {
     return (
-        <div className="content">
+        <div className="example">
             <h1>FlipDown.js</h1>
             <p>A lightweight and performant flip styled countdown clock</p>
             <ButtonGithub/>
