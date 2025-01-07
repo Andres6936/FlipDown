@@ -166,11 +166,11 @@ export function Rotor({value, prevValue}: Props) {
     return (
         <RotorContainer>
             <RotorLeaf ref={rotorLeafRef} className="flipped">
-                <RotorLeafRear className="rotor-leaf-rear">
+                <RotorLeafRear>
                     {value}
                 </RotorLeafRear>
 
-                <RotorLeafFront className="rotor-leaf-front">
+                <RotorLeafFront>
                     {prevValue}
                 </RotorLeafFront>
             </RotorLeaf>
