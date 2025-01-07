@@ -2,8 +2,6 @@ import {Rotor} from "./Rotor";
 import {useMemo} from "react";
 import styled, {css} from "styled-components";
 
-import './RotorGroup.css'
-
 const getPrevValue = (value: string) => {
     const valueAsNumber = +value;
     if (valueAsNumber === 9) {
@@ -81,6 +79,31 @@ const RotorGroupContainer = styled.div`
     }
 `
 
+const RotorGroupHeading = styled.div`
+    &:before {
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+    }
+
+    &:before {
+        content: attr(data-before);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        &:before {
+            color: #EEEEEE;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        &:before {
+            color: #000000;
+        }
+    }
+`
+
 type Props = {
     title: string;
     value: string;
@@ -91,7 +114,7 @@ export function RotorGroup({title, value}: Props) {
 
     return (
         <RotorGroupContainer>
-            <div className="rotor-group-heading" data-before={title}/>
+            <RotorGroupHeading data-before={title}/>
             <FlexContainer>
                 <Rotor value={slot1} prevValue={getPrevValue(slot1)}/>
                 <Rotor value={slot2} prevValue={getPrevValue(slot2)}/>
