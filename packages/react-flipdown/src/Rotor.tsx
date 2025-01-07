@@ -28,7 +28,7 @@ const RotorContainer = styled.div`
         border-radius: 0 0 4px 4px;
     }
 
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: light) {
         color: #FFFFFF;
         background-color: #202020;
 
@@ -37,7 +37,7 @@ const RotorContainer = styled.div`
         }
     }
 
-    @media (prefers-color-scheme: light) {
+    @media (prefers-color-scheme: dark) {
         color: #222222;
         background-color: #DDDDDD;
         
@@ -58,12 +58,12 @@ const RotorTop = styled(RotorTopBottomView)`
     line-height: 80px;
     border-radius: 4px 4px 0 0;
 
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: light) {
         color: #FFFFFF;
         background-color: #202020;
     }
 
-    @media (prefers-color-scheme: light) {
+    @media (prefers-color-scheme: dark) {
         color: #222222;
         background-color: #DDDDDD;
     }
@@ -74,12 +74,12 @@ const RotorBottom = styled(RotorTopBottomView)`
     line-height: 0;
     border-radius: 0 0 4px 4px;
 
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: light) {
         color: #EFEFEF;
         background-color: #202020;
     }
 
-    @media (prefers-color-scheme: light) {
+    @media (prefers-color-scheme: dark) {
         color: #333333;
         background-color: #EEEEEE;
     }
@@ -114,12 +114,12 @@ const RotorLeafRear = styled(RotorLeafView)`
     border-radius: 0 0 4px 4px;
     transform: rotateX(-180deg);
 
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: light) {
         color: #EFEFEF;
         background-color: #202020;
     }
 
-    @media (prefers-color-scheme: light) {
+    @media (prefers-color-scheme: dark) {
         color: #333333;
         background-color: #EEEEEE;
     }
@@ -129,12 +129,12 @@ const RotorLeafFront = styled(RotorLeafView)`
     line-height: 80px;
     border-radius: 4px 4px 0 0;
 
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: light) {
         color: #FFFFFF;
         background-color: #202020;
     }
 
-    @media (prefers-color-scheme: light) {
+    @media (prefers-color-scheme: dark) {
         color: #222222;
         background-color: #DDDDDD;
     }
