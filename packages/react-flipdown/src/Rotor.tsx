@@ -1,6 +1,5 @@
 import {useEffect, useRef, useState} from "react";
 
-import './Rotor.css'
 import styled from "styled-components";
 
 const RotorContainer = styled.div`
@@ -95,6 +94,12 @@ const RotorLeaf = styled.div`
     width: 50px;
     height: 80px;
     transform-style: preserve-3d;
+    
+    
+    &.flipped {
+        transform: rotateX(-180deg);
+        transition: all 0.5s ease-in-out;
+    }
 `
 
 const RotorLeafRear = styled.figure`
