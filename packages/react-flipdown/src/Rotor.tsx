@@ -13,11 +13,11 @@ const RotorContainer = styled.div`
     text-align: center;
     perspective: 200px;
     
-    :last-child {
+    &:last-child {
         margin-right: 0;
     }
     
-    :after {
+    &:after {
         content: '';
         z-index: 2;
         position: absolute;
@@ -32,7 +32,7 @@ const RotorContainer = styled.div`
         color: #FFFFFF;
         background-color: #202020;
 
-        :after {
+        &:after {
             border-top: solid 1px #151515;
         }
     }
@@ -41,7 +41,7 @@ const RotorContainer = styled.div`
         color: #222222;
         background-color: #DDDDDD;
         
-        :after {
+        &:after {
             border-top: solid 1px #222222;
         }
     }

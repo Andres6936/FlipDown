@@ -26,16 +26,6 @@
     }
 }
 
-.rotor-group {
-    position: relative;
-    float: left;
-    padding-right: 30px;
-}
-
-.rotor-group:last-child {
-    padding-right: 0;
-}
-
 .rotor-group-heading:before {
     display: block;
     height: 30px;

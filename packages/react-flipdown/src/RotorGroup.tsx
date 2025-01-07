@@ -21,6 +21,16 @@ const FlexContainer = styled.div`
     column-gap: 0.3rem;
 `
 
+const RotorGroupContainer = styled.div`
+    position: relative;
+    float: left;
+    padding-right: 30px;
+
+    &:last-child {
+        padding-right: 0;
+    }
+`
+
 type Props = {
     title: string;
     value: string;
@@ -30,12 +40,12 @@ export function RotorGroup({title, value}: Props) {
     const [slot1, slot2] = useMemo(() => value.split(''), [value])
 
     return (
-        <div className="rotor-group">
+        <RotorGroupContainer className="rotor-group">
             <div className="rotor-group-heading" data-before={title}/>
             <FlexContainer>
                 <Rotor value={slot1} prevValue={getPrevValue(slot1)}/>
                 <Rotor value={slot2} prevValue={getPrevValue(slot2)}/>
             </FlexContainer>
-        </div>
+        </RotorGroupContainer>
     )
 }
