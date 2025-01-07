@@ -121,6 +121,30 @@ const RotorLeafRear = styled.figure`
     }
 `
 
+const RotorLeafFront = styled.figure`
+    overflow: hidden;
+    position: absolute;
+    width: 50px;
+    height: 40px;
+    margin: 0;
+    transform: rotateX(0deg);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    line-height: 80px;
+    border-radius: 4px 4px 0 0;
+
+    @media (prefers-color-scheme: dark) {
+        color: #FFFFFF;
+        background-color: #202020;
+    }
+
+    @media (prefers-color-scheme: light) {
+        color: #222222;
+        background-color: #DDDDDD;
+    }
+`
+
 type Props = {
     value: string;
     prevValue: number,
@@ -146,9 +170,9 @@ export function Rotor({value, prevValue}: Props) {
                     {value}
                 </RotorLeafRear>
 
-                <figure className="rotor-leaf-front">
+                <RotorLeafFront className="rotor-leaf-front">
                     {prevValue}
-                </figure>
+                </RotorLeafFront>
             </RotorLeaf>
 
             <RotorTop>

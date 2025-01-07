@@ -1,36 +1,4 @@
-@media (prefers-color-scheme: dark) {
-    /* Rotor tops */
-    .rotor-leaf-front {
-        color: #FFFFFF;
-        background-color: #202020;
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    /* Rotor tops */
-    .rotor-leaf-front {
-        color: #222222;
-        background-color: #DDDDDD;
-    }
-}
-
 .flipped {
     transform: rotateX(-180deg);
     transition: all 0.5s ease-in-out;
-}
-
-.rotor-leaf-front {
-    overflow: hidden;
-    position: absolute;
-    width: 50px;
-    height: 40px;
-    margin: 0;
-    transform: rotateX(0deg);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
-.rotor-leaf-front {
-    line-height: 80px;
-    border-radius: 4px 4px 0 0;
 }
