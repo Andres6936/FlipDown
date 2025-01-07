@@ -26,12 +26,6 @@
     }
 }
 
-.flex {
-    display: flex;
-    justify-content: center;
-    column-gap: 0.3rem;
-}
-
 .rotor-group {
     position: relative;
     float: left;

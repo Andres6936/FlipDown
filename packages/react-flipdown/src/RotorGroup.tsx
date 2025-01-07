@@ -1,5 +1,6 @@
 import {Rotor} from "./Rotor";
 import {useMemo} from "react";
+import styled from "styled-components";
 
 import './RotorGroup.css'
 
@@ -14,6 +15,12 @@ const getPrevValue = (value: string) => {
     }
 };
 
+const FlexContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    column-gap: 0.3rem;
+`
+
 type Props = {
     title: string;
     value: string;
@@ -25,10 +32,10 @@ export function RotorGroup({title, value}: Props) {
     return (
         <div className="rotor-group">
             <div className="rotor-group-heading" data-before={title}/>
-            <div className="flex">
+            <FlexContainer>
                 <Rotor value={slot1} prevValue={getPrevValue(slot1)}/>
                 <Rotor value={slot2} prevValue={getPrevValue(slot2)}/>
-            </div>
+            </FlexContainer>
         </div>
     )
 }
