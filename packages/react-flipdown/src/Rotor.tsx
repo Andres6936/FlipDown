@@ -1,6 +1,30 @@
 import {useEffect, useRef} from "react";
 import styled, {css} from "styled-components";
 
+const PreferColorScheme = css`
+    @media (prefers-color-scheme: light) {
+        color: #FFFFFF;
+        background-color: #202020;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        color: #222222;
+        background-color: #DDDDDD;
+    }
+`
+
+const PreferColorSchemeVariant = css`
+    @media (prefers-color-scheme: light) {
+        color: #EFEFEF;
+        background-color: #202020;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        color: #333333;
+        background-color: #EEEEEE;
+    }
+`
+
 const RotorContainer = styled.div`
     position: relative;
     float: left;
@@ -43,30 +67,6 @@ const RotorContainer = styled.div`
         &:after {
             border-top: solid 1px #222222;
         }
-    }
-`
-
-const PreferColorScheme = css`
-    @media (prefers-color-scheme: light) {
-        color: #FFFFFF;
-        background-color: #202020;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        color: #222222;
-        background-color: #DDDDDD;
-    }
-`
-
-const PreferColorSchemeVariant = css`
-    @media (prefers-color-scheme: light) {
-        color: #EFEFEF;
-        background-color: #202020;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        color: #333333;
-        background-color: #EEEEEE;
     }
 `
 
