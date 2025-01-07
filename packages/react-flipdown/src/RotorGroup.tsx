@@ -29,6 +29,27 @@ const RotorGroupContainer = styled.div`
     &:last-child {
         padding-right: 0;
     }
+
+    &:nth-child(n+2):nth-child(-n+3):before {
+        content: '';
+        position: absolute;
+        bottom: 20px;
+        left: 115px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    &:nth-child(n+2):nth-child(-n+3):after {
+        content: '';
+        position: absolute;
+        bottom: 50px;
+        left: 115px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
 `
 
 type Props = {
