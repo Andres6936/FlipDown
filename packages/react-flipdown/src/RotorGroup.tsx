@@ -1,6 +1,6 @@
 import {Rotor} from "./Rotor";
 import {useMemo} from "react";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 import './RotorGroup.css'
 
@@ -21,6 +21,15 @@ const FlexContainer = styled.div`
     column-gap: 0.3rem;
 `
 
+const Point = css`
+    content: '';
+    position: absolute;
+    left: 115px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+`
+
 const RotorGroupContainer = styled.div`
     position: relative;
     float: left;
@@ -31,23 +40,13 @@ const RotorGroupContainer = styled.div`
     }
 
     &:nth-child(n+2):nth-child(-n+3):before {
-        content: '';
-        position: absolute;
+        ${Point};
         bottom: 20px;
-        left: 115px;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
     }
 
     &:nth-child(n+2):nth-child(-n+3):after {
-        content: '';
-        position: absolute;
+        ${Point};
         bottom: 50px;
-        left: 115px;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
     }
 
 `
