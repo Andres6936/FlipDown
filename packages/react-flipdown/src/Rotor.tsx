@@ -58,6 +58,18 @@ const PreferColorScheme = css`
     }
 `
 
+const PreferColorSchemeVariant = css`
+    @media (prefers-color-scheme: light) {
+        color: #EFEFEF;
+        background-color: #202020;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        color: #333333;
+        background-color: #EEEEEE;
+    }
+`
+
 const RotorTopBottomView = styled.div`
     overflow: hidden;
     position: absolute;
@@ -77,15 +89,7 @@ const RotorBottom = styled(RotorTopBottomView)`
     line-height: 0;
     border-radius: 0 0 4px 4px;
 
-    @media (prefers-color-scheme: light) {
-        color: #EFEFEF;
-        background-color: #202020;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        color: #333333;
-        background-color: #EEEEEE;
-    }
+    ${PreferColorSchemeVariant}
 `
 
 const RotorLeaf = styled.div`
@@ -117,15 +121,7 @@ const RotorLeafRear = styled(RotorLeafView)`
     border-radius: 0 0 4px 4px;
     transform: rotateX(-180deg);
 
-    @media (prefers-color-scheme: light) {
-        color: #EFEFEF;
-        background-color: #202020;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        color: #333333;
-        background-color: #EEEEEE;
-    }
+    ${PreferColorSchemeVariant}
 `
 
 const RotorLeafFront = styled(RotorLeafView)`
