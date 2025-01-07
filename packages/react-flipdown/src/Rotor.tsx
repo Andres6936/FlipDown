@@ -1,6 +1,5 @@
-import {useEffect, useRef, useState} from "react";
-
-import styled from "styled-components";
+import {useEffect, useRef} from "react";
+import styled, {css} from "styled-components";
 
 const RotorContainer = styled.div`
     position: relative;
@@ -47,6 +46,18 @@ const RotorContainer = styled.div`
     }
 `
 
+const PreferColorSchemeLight = css`
+    @media (prefers-color-scheme: light) {
+        color: #FFFFFF;
+        background-color: #202020;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        color: #222222;
+        background-color: #DDDDDD;
+    }
+`
+
 const RotorTopBottomView = styled.div`
     overflow: hidden;
     position: absolute;
@@ -58,15 +69,7 @@ const RotorTop = styled(RotorTopBottomView)`
     line-height: 80px;
     border-radius: 4px 4px 0 0;
 
-    @media (prefers-color-scheme: light) {
-        color: #FFFFFF;
-        background-color: #202020;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        color: #222222;
-        background-color: #DDDDDD;
-    }
+    ${PreferColorSchemeLight}
 `
 
 const RotorBottom = styled(RotorTopBottomView)`
@@ -129,15 +132,7 @@ const RotorLeafFront = styled(RotorLeafView)`
     line-height: 80px;
     border-radius: 4px 4px 0 0;
 
-    @media (prefers-color-scheme: light) {
-        color: #FFFFFF;
-        background-color: #202020;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        color: #222222;
-        background-color: #DDDDDD;
-    }
+    ${PreferColorSchemeLight}
 `
 
 type Props = {
