@@ -116,8 +116,8 @@ export function Rotor({value, prevValue}: Props) {
     }, [value]);
 
     return (
-        <RotorContainer className="rotor">
-            <RotorLeaf ref={rotorLeafRef} className="rotor-leaf flipped">
+        <RotorContainer>
+            <RotorLeaf ref={rotorLeafRef} className="flipped">
                 <figure className="rotor-leaf-rear">
                     {value}
                 </figure>
@@ -127,11 +127,11 @@ export function Rotor({value, prevValue}: Props) {
                 </figure>
             </RotorLeaf>
 
-            <RotorTop className="rotor-top">
+            <RotorTop>
                 {value}
             </RotorTop>
 
-            <RotorBottom className="rotor-bottom">
+            <RotorBottom>
                 {prevValue}
             </RotorBottom>
         </RotorContainer>
