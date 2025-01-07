@@ -21,19 +21,19 @@
     text-align: center;
 }
 
-.rotor-group:nth-child(1) .rotor-group-heading:before {
+ .rotor-group-heading:before {
     content: attr(data-before);
 }
 
-.rotor-group:nth-child(2) .rotor-group-heading:before {
+ .rotor-group-heading:before {
     content: attr(data-before);
 }
 
-.rotor-group:nth-child(3) .rotor-group-heading:before {
+ .rotor-group-heading:before {
     content: attr(data-before);
 }
 
-.rotor-group:nth-child(4) .rotor-group-heading:before {
+ .rotor-group-heading:before {
     content: attr(data-before);
 }
 
