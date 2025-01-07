@@ -47,23 +47,6 @@ const RotorGroupContainer = styled.div`
         bottom: 50px;
     }
 
-    &:nth-child(1) {
-        content: attr(data-before);
-    }
-
-    &:nth-child(2) {
-        content: attr(data-before);
-    }
-
-    &:nth-child(3) {
-        content: attr(data-before);
-    }
-
-    &:nth-child(4) {
-        content: attr(data-before);
-    }
-
-
     @media (prefers-color-scheme: dark) {
         &:nth-child(n+2):nth-child(-n+3):before,
         &:nth-child(n+2):nth-child(-n+3):after {
