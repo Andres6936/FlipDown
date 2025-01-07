@@ -4,12 +4,6 @@
     .rotor-group-heading:before {
         color: #EEEEEE;
     }
-
-    /* Delimeters */
-    .rotor-group:nth-child(n+2):nth-child(-n+3):before,
-    .rotor-group:nth-child(n+2):nth-child(-n+3):after {
-        background-color: #151515;
-    }
 }
 
 @media (prefers-color-scheme: light) {
@@ -17,12 +11,6 @@
     /* Rotor group headings */
     .rotor-group-heading:before {
         color: #000000;
-    }
-
-    /* Delimeters */
-    .rotor-group:nth-child(n+2):nth-child(-n+3):before,
-    .rotor-group:nth-child(n+2):nth-child(-n+3):after {
-        background-color: #DDDDDD;
     }
 }
 

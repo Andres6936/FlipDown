@@ -49,6 +49,19 @@ const RotorGroupContainer = styled.div`
         bottom: 50px;
     }
 
+    @media (prefers-color-scheme: dark) {
+        &:nth-child(n+2):nth-child(-n+3):before,
+        &:nth-child(n+2):nth-child(-n+3):after {
+            background-color: #151515;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        &:nth-child(n+2):nth-child(-n+3):before,
+        &:nth-child(n+2):nth-child(-n+3):after {
+            background-color: #DDDDDD;
+        }
+    }
 `
 
 type Props = {
