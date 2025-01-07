@@ -46,7 +46,7 @@ const RotorContainer = styled.div`
     }
 `
 
-const PreferColorSchemeLight = css`
+const PreferColorScheme = css`
     @media (prefers-color-scheme: light) {
         color: #FFFFFF;
         background-color: #202020;
@@ -69,7 +69,7 @@ const RotorTop = styled(RotorTopBottomView)`
     line-height: 80px;
     border-radius: 4px 4px 0 0;
 
-    ${PreferColorSchemeLight}
+    ${PreferColorScheme}
 `
 
 const RotorBottom = styled(RotorTopBottomView)`
@@ -132,7 +132,7 @@ const RotorLeafFront = styled(RotorLeafView)`
     line-height: 80px;
     border-radius: 4px 4px 0 0;
 
-    ${PreferColorSchemeLight}
+    ${PreferColorScheme}
 `
 
 type Props = {
