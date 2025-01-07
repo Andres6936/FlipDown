@@ -47,12 +47,14 @@ const RotorContainer = styled.div`
     }
 `
 
-const RotorTop = styled.div`
+const RotorTopBottomView = styled.div`
     overflow: hidden;
     position: absolute;
     width: 50px;
     height: 40px;
-    
+`
+
+const RotorTop = styled(RotorTopBottomView)`
     line-height: 80px;
     border-radius: 4px 4px 0 0;
 
@@ -67,12 +69,7 @@ const RotorTop = styled.div`
     }
 `
 
-const RotorBottom = styled.div`
-    overflow: hidden;
-    position: absolute;
-    width: 50px;
-    height: 40px;
-    
+const RotorBottom = styled(RotorTopBottomView)`
     bottom: 0;
     line-height: 0;
     border-radius: 0 0 4px 4px;
