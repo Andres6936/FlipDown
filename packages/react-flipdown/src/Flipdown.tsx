@@ -1,9 +1,19 @@
 import {RotorGroup} from "./RotorGroup";
 import {useCallback, useEffect, useState} from "react";
-
-import './Flipdown.css'
+import styled from "styled-components";
 
 const pad = (value: number) => String(value).padStart(2, '0');
+
+const Container = styled.div`
+    display: flex;
+    column-gap: 1.5rem;
+    justify-content: center;
+    overflow: visible;
+    width: 510px;
+    height: 110px;
+    font-family: sans-serif;
+    font-weight: bold;
+`
 
 type Props = {
     epoch: number;
@@ -78,11 +88,11 @@ export function Flipdown({epoch, ifEnded}: Props) {
     }, []);
 
     return (
-        <section className="flipdown flipdown__theme-dark">
+        <Container className="flipdown__theme-dark">
             <RotorGroup title="Days" value={pad(days)}/>
             <RotorGroup title="Hours" value={pad(hours)}/>
             <RotorGroup title="Minutes" value={pad(minutes)}/>
             <RotorGroup title="Seconds" value={pad(seconds)}/>
-        </section>
+        </Container>
     )
 }
