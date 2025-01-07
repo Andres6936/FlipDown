@@ -99,7 +99,7 @@ const RotorLeaf = styled.div`
     }
 `
 
-const RotorLeafRear = styled.figure`
+const RotorLeafView = styled.figure`
     overflow: hidden;
     position: absolute;
     width: 50px;
@@ -107,7 +107,9 @@ const RotorLeafRear = styled.figure`
     margin: 0;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+`
 
+const RotorLeafRear = styled(RotorLeafView)`
     line-height: 0;
     border-radius: 0 0 4px 4px;
     transform: rotateX(-180deg);
@@ -123,16 +125,7 @@ const RotorLeafRear = styled.figure`
     }
 `
 
-const RotorLeafFront = styled.figure`
-    overflow: hidden;
-    position: absolute;
-    width: 50px;
-    height: 40px;
-    margin: 0;
-    transform: rotateX(0deg);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-
+const RotorLeafFront = styled(RotorLeafView)`
     line-height: 80px;
     border-radius: 4px 4px 0 0;
 
