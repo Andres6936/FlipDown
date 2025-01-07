@@ -90,7 +90,7 @@ export function RotorGroup({title, value}: Props) {
     const [slot1, slot2] = useMemo(() => value.split(''), [value])
 
     return (
-        <RotorGroupContainer className="rotor-group">
+        <RotorGroupContainer>
             <div className="rotor-group-heading" data-before={title}/>
             <FlexContainer>
                 <Rotor value={slot1} prevValue={getPrevValue(slot1)}/>
