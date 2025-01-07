@@ -97,6 +97,30 @@ const RotorLeaf = styled.div`
     transform-style: preserve-3d;
 `
 
+const RotorLeafRear = styled.figure`
+    overflow: hidden;
+    position: absolute;
+    width: 50px;
+    height: 40px;
+    margin: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    line-height: 0;
+    border-radius: 0 0 4px 4px;
+    transform: rotateX(-180deg);
+
+    @media (prefers-color-scheme: dark) {
+        color: #EFEFEF;
+        background-color: #202020;
+    }
+
+    @media (prefers-color-scheme: light) {
+        color: #333333;
+        background-color: #EEEEEE;
+    }
+`
+
 type Props = {
     value: string;
     prevValue: number,
@@ -118,9 +142,9 @@ export function Rotor({value, prevValue}: Props) {
     return (
         <RotorContainer>
             <RotorLeaf ref={rotorLeafRef} className="flipped">
-                <figure className="rotor-leaf-rear">
+                <RotorLeafRear className="rotor-leaf-rear">
                     {value}
-                </figure>
+                </RotorLeafRear>
 
                 <figure className="rotor-leaf-front">
                     {prevValue}
