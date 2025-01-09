@@ -21,6 +21,8 @@ const RotorContainer = styled.div`
     font-size: 4rem;
     text-align: center;
     perspective: 200px;
+    color: light-dark(#FFFFFF, #222222);
+    background-color: light-dark(#202020, #DDDDDD);
     
     &:last-child {
         margin-right: 0;
@@ -35,21 +37,7 @@ const RotorContainer = styled.div`
         width: 50px;
         height: 40px;
         border-radius: 0 0 4px 4px;
-    }
-    
-    color: light-dark(#FFFFFF, #222222);
-    background-color: light-dark(#202020, #DDDDDD);
-
-    @media (prefers-color-scheme: light) {
-        &:after {
-            border-top: solid 1px #151515;
-        }
-    }
-
-    @media (prefers-color-scheme: dark) {
-        &:after {
-            border-top: solid 1px #222222;
-        }
+        border-top: solid 1px light-dark(#151515, #222222);
     }
 `
 
