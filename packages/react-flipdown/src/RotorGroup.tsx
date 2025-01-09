@@ -40,25 +40,13 @@ const RotorGroupContainer = styled.div`
     &:nth-child(n+2):nth-child(-n+3):before {
         ${Point};
         bottom: 20px;
+        background-color: light-dark(#151515, #DDDDDD);
     }
 
     &:nth-child(n+2):nth-child(-n+3):after {
         ${Point};
         bottom: 50px;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        &:nth-child(n+2):nth-child(-n+3):before,
-        &:nth-child(n+2):nth-child(-n+3):after {
-            background-color: #151515;
-        }
-    }
-
-    @media (prefers-color-scheme: light) {
-        &:nth-child(n+2):nth-child(-n+3):before,
-        &:nth-child(n+2):nth-child(-n+3):after {
-            background-color: #DDDDDD;
-        }
+        background-color: light-dark(#151515, #DDDDDD);
     }
 `
 
@@ -71,19 +59,8 @@ const RotorGroupHeading = styled.div`
     }
 
     &:before {
+        color: light-dark(#000000, #EEEEEE);
         content: attr(data-before);
-    }
-
-    @media (prefers-color-scheme: dark) {
-        &:before {
-            color: #EEEEEE;
-        }
-    }
-
-    @media (prefers-color-scheme: light) {
-        &:before {
-            color: #000000;
-        }
     }
 `
 
