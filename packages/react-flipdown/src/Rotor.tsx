@@ -120,7 +120,7 @@ export function Rotor({value, prevValue}: Props) {
                 rotorLeafRef.current?.classList.add("flipped");
             }, 500);
         }
-    }, [value]);
+    }, [value, prevValue]);
 
     return (
         <RotorContainer>
