@@ -1,6 +1,6 @@
 import {useEffect, useRef} from "react";
 import styled, {css} from "styled-components";
-import {useIsFirstRender} from "./useIsFirstRender";
+import {useFirstRender} from "./useFirstRender";
 
 const PreferColorScheme = css`
     color: light-dark(#FFFFFF, #222222);
@@ -110,10 +110,10 @@ type Props = {
 
 export function Rotor({value, prevValue}: Props) {
     const rotorLeafRef = useRef<HTMLDivElement>(null);
-    const isFirstRender = useIsFirstRender();
+    const isFirstRender = useFirstRender();
 
     useEffect(() => {
-        if (rotorLeafRef.current && !isFirstRender.current) {
+        if (rotorLeafRef.current && !isFirstRender) {
             // Animate the flipping transition
             rotorLeafRef.current.classList.remove("flipped");
             setTimeout(() => {
