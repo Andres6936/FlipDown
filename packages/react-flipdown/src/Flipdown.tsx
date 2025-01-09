@@ -92,7 +92,7 @@ export function Flipdown({epoch, ifEnded}: Props) {
     }, []);
 
     return (
-        <Container className="flipdown__theme-dark">
+        <Container>
             <RotorGroup title="Days" value={pad(days)}/>
             <RotorGroup title="Hours" value={pad(hours)}/>
             <RotorGroup title="Minutes" value={pad(minutes)}/>
