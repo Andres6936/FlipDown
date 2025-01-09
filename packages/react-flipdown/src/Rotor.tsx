@@ -36,20 +36,17 @@ const RotorContainer = styled.div`
         height: 40px;
         border-radius: 0 0 4px 4px;
     }
+    
+    color: light-dark(#FFFFFF, #222222);
+    background-color: light-dark(#202020, #DDDDDD);
 
     @media (prefers-color-scheme: light) {
-        color: #FFFFFF;
-        background-color: #202020;
-
         &:after {
             border-top: solid 1px #151515;
         }
     }
 
     @media (prefers-color-scheme: dark) {
-        color: #222222;
-        background-color: #DDDDDD;
-        
         &:after {
             border-top: solid 1px #222222;
         }
