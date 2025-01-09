@@ -13,6 +13,10 @@ const Container = styled.div`
     height: 110px;
     font-family: sans-serif;
     font-weight: bold;
+    
+    :host {
+        color-scheme: light dark;
+    }
 `
 
 type Props = {

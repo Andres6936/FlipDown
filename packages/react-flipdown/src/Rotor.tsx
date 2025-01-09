@@ -2,27 +2,13 @@ import {useEffect, useRef} from "react";
 import styled, {css} from "styled-components";
 
 const PreferColorScheme = css`
-    @media (prefers-color-scheme: light) {
-        color: #FFFFFF;
-        background-color: #202020;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        color: #222222;
-        background-color: #DDDDDD;
-    }
+    color: light-dark(#FFFFFF, #222222);
+    background-color: light-dark(#202020, #DDDDDD);
 `
 
 const PreferColorSchemeVariant = css`
-    @media (prefers-color-scheme: light) {
-        color: #EFEFEF;
-        background-color: #202020;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        color: #333333;
-        background-color: #EEEEEE;
-    }
+    color: light-dark(#EFEFEF, #333333);
+    background-color: light-dark(#202020, #EEEEEE);
 `
 
 const RotorContainer = styled.div`
