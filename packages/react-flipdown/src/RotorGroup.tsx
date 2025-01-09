@@ -1,9 +1,11 @@
 import {Rotor} from "./Rotor";
-import {useMemo} from "react";
+import {useEffect, useMemo, useRef} from "react";
 import styled, {css} from "styled-components";
 
-const getPrevValue = (value: string) => {
+const getPrevValue = (value: string, isFirstRender: boolean) => {
     const valueAsNumber = +value;
+    if (isFirstRender) return valueAsNumber;
+
     if (valueAsNumber === 9) {
         return 0;
     } else if (valueAsNumber === 0) {
@@ -72,12 +74,21 @@ type Props = {
 export function RotorGroup({title, value}: Props) {
     const [slot1, slot2] = useMemo(() => value.split(''), [value])
 
+    const firstRender = useRef(true);
+
+    useEffect(() => {
+        if (firstRender.current) {
+            firstRender.current = false;
+            return;
+        }
+    }, [])
+
     return (
         <RotorGroupContainer>
             <RotorGroupHeading data-before={title}/>
             <FlexContainer>
-                <Rotor value={slot1} prevValue={getPrevValue(slot1)}/>
-                <Rotor value={slot2} prevValue={getPrevValue(slot2)}/>
+                <Rotor value={slot1} prevValue={getPrevValue(slot1, firstRender.current)}/>
+                <Rotor value={slot2} prevValue={getPrevValue(slot2, firstRender.current)}/>
             </FlexContainer>
         </RotorGroupContainer>
     )
