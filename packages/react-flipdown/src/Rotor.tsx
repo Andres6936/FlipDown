@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {startTransition, useEffect, useRef} from "react";
 import styled, {css} from "styled-components";
 import {useFirstRender} from "./useFirstRender";
 
@@ -122,8 +122,11 @@ export function Rotor({value, prevValue}: Props) {
             setTimeout(() => {
                 rotorLeafRef.current?.classList.add("flipped");
                 setCurrentValue(value);
-                setPreviousValue(prevValue);
             }, 500);
+
+            setTimeout(() => {
+                setPreviousValue(prevValue);
+            }, 800);
         }
     }, [value, prevValue]);
 
