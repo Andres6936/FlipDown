@@ -1,22 +1,122 @@
 import {RotorGroup} from "./RotorGroup";
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
+import styled from "styled-components";
+import {useFirstRender} from "./useFirstRender";
 
-import './Flipdown.css'
+const ONE_SECOND_IN_MS = 1000;
 
-const pad = (value: number) => String(value).padStart(2, '0');
+const MAXIMUM_OF_DAY = 365;
+const MAXIMUM_OF_HOUR = 24;
+const MAXIMUM_OF_MINUTE = 60;
+const MAXIMUM_OF_SECOND = 60;
 
-type Props = {
-    epoch: number;
-    ifEnded?: () => void;
+const clampDay = (value: number) => {
+    if (value >= MAXIMUM_OF_DAY) return MAXIMUM_OF_DAY;
+    if (value < 0) return 0;
+    return value;
 }
 
-export function Flipdown({epoch, ifEnded}: Props) {
-    const [days, setDays] = useState<number>(0);
-    const [hours, setHours] = useState<number>(0);
-    const [minutes, setMinutes] = useState<number>(0);
-    const [seconds, setSeconds] = useState<number>(0);
+const clampHour = (value: number) => {
+    if (value >= MAXIMUM_OF_HOUR) return MAXIMUM_OF_HOUR;
+    if (value < 0) return 0;
+    return value;
+}
+
+const clampMinute = (value: number) => {
+    if (value >= MAXIMUM_OF_MINUTE) return MAXIMUM_OF_MINUTE;
+    if (value < 0) return 0;
+    return value;
+}
+
+const clamSecond = (value: number) => {
+    if (value >= MAXIMUM_OF_SECOND) return MAXIMUM_OF_SECOND;
+    if (value < 0) return 0;
+    return value;
+}
+
+const getCountdown = (epoch: number, isFirstRender: boolean) => {
+    // Get time now
+    const now = new Date().getTime() / 1000;
+
+    // Between now and epoch
+    let diff = epoch - now <= 0 ? 0 : epoch - now;
+
+    // Days remaining
+    const days = Math.floor(diff / 86400);
+    diff -= days * 86400;
+
+    // Hours remaining
+    const hours = Math.floor(diff / 3600);
+    diff -= hours * 3600;
+
+    // Minutes remaining
+    const minutes = Math.floor(diff / 60);
+    diff -= minutes * 60;
+
+    // Seconds remaining
+    const seconds = Math.floor(diff);
+
+    return {
+        days: {
+            current: days,
+            previous: isFirstRender ? days : clampDay(days - 1),
+        },
+        hours: {
+            current: hours,
+            previous: isFirstRender ? hours : clampHour(hours - 1),
+        },
+        minutes: {
+            current: minutes,
+            previous: isFirstRender ? minutes : clampMinute(minutes - 1),
+        },
+        seconds: {
+            current: seconds,
+            previous: isFirstRender ? seconds : clamSecond(seconds - 1),
+        },
+    }
+}
+
+const Container = styled.div`
+    display: flex;
+    column-gap: 1.5rem;
+    justify-content: center;
+    overflow: visible;
+    width: 510px;
+    height: 110px;
+    font-family: sans-serif;
+    font-weight: bold;
+
+    :host {
+        color-scheme: light dark;
+    }
+`
+
+export type Props = {
+    epoch: number;
+    ifEnded?: () => void;
+    labels?: {
+        days: string,
+        hours: string,
+        minutes: string,
+        seconds: string,
+    },
+    showLabels?: boolean,
+    showSeparators?: boolean,
+}
+
+export function Flipdown({epoch, ifEnded, ...props}: Props) {
+    const isFirstRender = useFirstRender();
+
     const [countdownEnded, setCountdownEnded] = useState<boolean>(false);
     const [callbackCalled, setCallbackCalled] = useState<boolean>(false);
+    const [countdown, setCountdown] = useState(getCountdown(epoch, isFirstRender));
+
+    const labels = useMemo(() => ({
+        days: props.labels?.days || "Days",
+        hours: props.labels?.hours || "Hours",
+        minutes: props.labels?.minutes || "Minutes",
+        seconds: props.labels?.seconds || "Seconds",
+    }), [props.labels])
 
     // Has the countdown ended?
     const hasCountdownEnded = useCallback(() => {
@@ -43,46 +143,21 @@ export function Flipdown({epoch, ifEnded}: Props) {
     // Calculate current tick
     useEffect(() => {
         const interval = setInterval(() => {
-            // Get time now
-            const now = new Date().getTime() / 1000;
-
-            // Between now and epoch
-            let diff = epoch - now <= 0 ? 0 : epoch - now;
-
-            // Days remaining
-            const days = Math.floor(diff / 86400);
-            diff -= days * 86400;
-
-            // Hours remaining
-            const hours = Math.floor(diff / 3600);
-            diff -= hours * 3600;
-
-            // Minutes remaining
-            const minutes = Math.floor(diff / 60);
-            diff -= minutes * 60;
-
-            // Seconds remaining
-            const seconds = Math.floor(diff);
-
             // Has the countdown ended?
             hasCountdownEnded();
-
             // Trigger the refresh of UI
-            setDays(days);
-            setHours(hours);
-            setMinutes(minutes);
-            setSeconds(seconds);
-        }, 1_000)
+            setCountdown(getCountdown(epoch, isFirstRender));
+        }, ONE_SECOND_IN_MS)
 
         return () => clearInterval(interval);
     }, []);
 
     return (
-        <section className="flipdown flipdown__theme-dark">
-            <RotorGroup title="Days" value={pad(days)}/>
-            <RotorGroup title="Hours" value={pad(hours)}/>
-            <RotorGroup title="Minutes" value={pad(minutes)}/>
-            <RotorGroup title="Seconds" value={pad(seconds)}/>
-        </section>
+        <Container>
+            <RotorGroup title={labels.days} value={countdown.days}/>
+            <RotorGroup title={labels.hours} value={countdown.hours}/>
+            <RotorGroup title={labels.minutes} value={countdown.minutes}/>
+            <RotorGroup title={labels.seconds} value={countdown.seconds}/>
+        </Container>
     )
 }
