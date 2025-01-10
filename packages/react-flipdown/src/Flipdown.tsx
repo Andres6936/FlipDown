@@ -1,5 +1,5 @@
 import {RotorGroup} from "./RotorGroup";
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import styled from "styled-components";
 import {useFirstRender} from "./useFirstRender";
 
@@ -111,6 +111,13 @@ export function Flipdown({epoch, ifEnded, ...props}: Props) {
     const [callbackCalled, setCallbackCalled] = useState<boolean>(false);
     const [countdown, setCountdown] = useState(getCountdown(epoch, isFirstRender));
 
+    const labels = useMemo(() => ({
+        days: props.labels?.days || "Days",
+        hours: props.labels?.hours || "Hours",
+        minutes: props.labels?.minutes || "Minutes",
+        seconds: props.labels?.seconds || "Seconds",
+    }), [props.labels])
+
     // Has the countdown ended?
     const hasCountdownEnded = useCallback(() => {
         // Avoid recalculate if ended
@@ -147,10 +154,10 @@ export function Flipdown({epoch, ifEnded, ...props}: Props) {
 
     return (
         <Container>
-            <RotorGroup title={props.labels?.days || "Days"} value={countdown.days}/>
-            <RotorGroup title={props.labels?.hours || "Hours"} value={countdown.hours}/>
-            <RotorGroup title={props.labels?.minutes || "Minutes"} value={countdown.minutes}/>
-            <RotorGroup title={props.labels?.seconds || "Seconds"} value={countdown.seconds}/>
+            <RotorGroup title={labels.days} value={countdown.days}/>
+            <RotorGroup title={labels.hours} value={countdown.hours}/>
+            <RotorGroup title={labels.minutes} value={countdown.minutes}/>
+            <RotorGroup title={labels.seconds} value={countdown.seconds}/>
         </Container>
     )
 }
