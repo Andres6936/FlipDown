@@ -1,4 +1,4 @@
-import { Flipdown } from '../src/Flipdown';
+import { Flipdown, Props } from '../src/Flipdown';
 
 const meta = {
     title: 'Example/Flipdown',
@@ -10,6 +10,12 @@ export default meta;
 export const Primary = {
     args: {
         // Unix timestamp (in seconds) to count down to
-        epoch: (new Date().getTime() / 1000) + (86400 * 2) + 1
-    },
+        epoch: (new Date().getTime() / 1000) + (86400 * 2) + 1,
+        labels: {
+            days: 'Días',
+            hours: 'Horas',
+            minutes: 'Minutos',
+            seconds: 'Segundos',
+        }
+    } satisfies Props,
 };

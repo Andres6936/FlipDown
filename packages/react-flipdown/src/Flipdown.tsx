@@ -91,7 +91,7 @@ const Container = styled.div`
     }
 `
 
-type Props = {
+export type Props = {
     epoch: number;
     ifEnded?: () => void;
     labels?: {
