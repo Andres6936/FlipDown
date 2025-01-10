@@ -1,7 +1,6 @@
 import {RotorGroup} from "./RotorGroup";
 import {useCallback, useEffect, useState} from "react";
 import styled from "styled-components";
-import {TypeGroup} from "./TypeGroup";
 import {useFirstRender} from "./useFirstRender";
 
 const MAXIMUM_OF_DAY = 365;
@@ -138,10 +137,10 @@ export function Flipdown({epoch, ifEnded}: Props) {
 
     return (
         <Container>
-            <RotorGroup title="Days" type={TypeGroup.Days} value={countdown.days}/>
-            <RotorGroup title="Hours" type={TypeGroup.Hours} value={countdown.hours}/>
-            <RotorGroup title="Minutes" type={TypeGroup.Minutes} value={countdown.minutes}/>
-            <RotorGroup title="Seconds" type={TypeGroup.Seconds} value={countdown.seconds}/>
+            <RotorGroup title="Days" value={countdown.days}/>
+            <RotorGroup title="Hours" value={countdown.hours}/>
+            <RotorGroup title="Minutes" value={countdown.minutes}/>
+            <RotorGroup title="Seconds" value={countdown.seconds}/>
         </Container>
     )
 }

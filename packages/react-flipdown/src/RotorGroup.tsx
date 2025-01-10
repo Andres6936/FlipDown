@@ -1,8 +1,6 @@
 import {Rotor} from "./Rotor";
 import {useMemo} from "react";
 import styled, {css} from "styled-components";
-import {useFirstRender} from "./useFirstRender";
-import {TypeGroup} from "./TypeGroup";
 
 const FlexContainer = styled.div`
     display: flex;
@@ -61,10 +59,9 @@ type Props = {
         current: number,
         previous: number,
     };
-    type: TypeGroup;
 }
 
-export function RotorGroup({title, value, type}: Props) {
+export function RotorGroup({title, value}: Props) {
     const [slot1, slot2] = useMemo(() => String(value.current).padStart(2, "0").split(''), [value.current])
     const [prev1, prev2] = useMemo(() => String(value.previous).padStart(2, "0").split(''), [value.current])
 
