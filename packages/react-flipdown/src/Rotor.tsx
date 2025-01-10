@@ -2,6 +2,10 @@ import React, {startTransition, useEffect, useRef} from "react";
 import styled, {css} from "styled-components";
 import {useFirstRender} from "./useFirstRender";
 
+const MILLISECONDS_IN_SECOND = 1000;
+const DURATION_ANIMATION_FLIP_IN_MS = 500;
+const OFFSET_ANIMATION_FLIP_OUT_MS = 300;
+
 const PreferColorScheme = css`
     color: light-dark(#FFFFFF, #222222);
     background-color: light-dark(#202020, #DDDDDD);
@@ -74,7 +78,7 @@ const RotorLeaf = styled.div`
     
     &.flipped {
         transform: rotateX(-180deg);
-        transition: all 0.5s ease-in-out;
+        transition: all ${DURATION_ANIMATION_FLIP_IN_MS / MILLISECONDS_IN_SECOND}s ease-in-out;
     }
 `
 
@@ -122,11 +126,11 @@ export function Rotor({value, prevValue}: Props) {
             setTimeout(() => {
                 rotorLeafRef.current?.classList.add("flipped");
                 setCurrentValue(value);
-            }, 500);
+            }, DURATION_ANIMATION_FLIP_IN_MS);
 
             setTimeout(() => {
                 setPreviousValue(prevValue);
-            }, 800);
+            }, DURATION_ANIMATION_FLIP_IN_MS + OFFSET_ANIMATION_FLIP_OUT_MS);
         }
     }, [value, prevValue]);
 
