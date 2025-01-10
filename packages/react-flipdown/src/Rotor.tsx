@@ -112,12 +112,17 @@ export function Rotor({value, prevValue}: Props) {
     const rotorLeafRef = useRef<HTMLDivElement>(null);
     const isFirstRender = useFirstRender();
 
+    const [currentValue, setCurrentValue] = React.useState(value);
+    const [previousValue, setPreviousValue] = React.useState(prevValue);
+
     useEffect(() => {
         if (rotorLeafRef.current && !isFirstRender) {
             // Animate the flipping transition
             rotorLeafRef.current.classList.remove("flipped");
             setTimeout(() => {
                 rotorLeafRef.current?.classList.add("flipped");
+                setCurrentValue(value);
+                setPreviousValue(prevValue);
             }, 500);
         }
     }, [value, prevValue]);
@@ -126,20 +131,20 @@ export function Rotor({value, prevValue}: Props) {
         <RotorContainer>
             <RotorLeaf ref={rotorLeafRef}>
                 <RotorLeafRear>
-                    {value}
+                    {currentValue}
                 </RotorLeafRear>
 
                 <RotorLeafFront>
-                    {prevValue}
+                    {previousValue}
                 </RotorLeafFront>
             </RotorLeaf>
 
             <RotorTop>
-                {value}
+                {currentValue}
             </RotorTop>
 
             <RotorBottom>
-                {prevValue}
+                {previousValue}
             </RotorBottom>
         </RotorContainer>
     )
