@@ -85,7 +85,7 @@ const Container = styled.div`
     height: 110px;
     font-family: sans-serif;
     font-weight: bold;
-    
+
     :host {
         color-scheme: light dark;
     }
@@ -94,9 +94,17 @@ const Container = styled.div`
 type Props = {
     epoch: number;
     ifEnded?: () => void;
+    labels?: {
+        days: string,
+        hours: string,
+        minutes: string,
+        seconds: string,
+    },
+    showLabels?: boolean,
+    showSeparators?: boolean,
 }
 
-export function Flipdown({epoch, ifEnded}: Props) {
+export function Flipdown({epoch, ifEnded, ...props}: Props) {
     const isFirstRender = useFirstRender();
 
     const [countdownEnded, setCountdownEnded] = useState<boolean>(false);
@@ -139,10 +147,10 @@ export function Flipdown({epoch, ifEnded}: Props) {
 
     return (
         <Container>
-            <RotorGroup title="Days" value={countdown.days}/>
-            <RotorGroup title="Hours" value={countdown.hours}/>
-            <RotorGroup title="Minutes" value={countdown.minutes}/>
-            <RotorGroup title="Seconds" value={countdown.seconds}/>
+            <RotorGroup title={props.labels?.days || "Days"} value={countdown.days}/>
+            <RotorGroup title={props.labels?.hours || "Hours"} value={countdown.hours}/>
+            <RotorGroup title={props.labels?.minutes || "Minutes"} value={countdown.minutes}/>
+            <RotorGroup title={props.labels?.seconds || "Seconds"} value={countdown.seconds}/>
         </Container>
     )
 }
