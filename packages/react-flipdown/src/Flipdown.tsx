@@ -1,6 +1,7 @@
 import {RotorGroup} from "./RotorGroup";
 import {useCallback, useEffect, useState} from "react";
 import styled from "styled-components";
+import {TypeGroup} from "./TypeGroup";
 
 const pad = (value: number) => String(value).padStart(2, '0');
 
@@ -95,10 +96,10 @@ export function Flipdown({epoch, ifEnded}: Props) {
 
     return (
         <Container>
-            <RotorGroup title="Days" value={pad(countdown.days)}/>
-            <RotorGroup title="Hours" value={pad(countdown.hours)}/>
-            <RotorGroup title="Minutes" value={pad(countdown.minutes)}/>
-            <RotorGroup title="Seconds" value={pad(countdown.seconds)}/>
+            <RotorGroup title="Days" type={TypeGroup.Days} value={pad(countdown.days)}/>
+            <RotorGroup title="Hours" type={TypeGroup.Hours} value={pad(countdown.hours)}/>
+            <RotorGroup title="Minutes" type={TypeGroup.Minutes} value={pad(countdown.minutes)}/>
+            <RotorGroup title="Seconds" type={TypeGroup.Seconds} value={pad(countdown.seconds)}/>
         </Container>
     )
 }

@@ -2,6 +2,7 @@ import {Rotor} from "./Rotor";
 import {useEffect, useMemo, useRef} from "react";
 import styled, {css} from "styled-components";
 import {useFirstRender} from "./useFirstRender";
+import {TypeGroup} from "./TypeGroup";
 
 const getPrevValue = (value: string, isFirstRender: boolean) => {
     const valueAsNumber = +value;
@@ -70,9 +71,10 @@ const RotorGroupHeading = styled.div`
 type Props = {
     title: string;
     value: string;
+    type: TypeGroup;
 }
 
-export function RotorGroup({title, value}: Props) {
+export function RotorGroup({title, value, type}: Props) {
     const [slot1, slot2] = useMemo(() => value.split(''), [value])
 
     const isFirstRender = useFirstRender();
