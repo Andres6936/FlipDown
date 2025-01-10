@@ -1,21 +1,8 @@
 import {Rotor} from "./Rotor";
-import {useEffect, useMemo, useRef} from "react";
+import {useMemo} from "react";
 import styled, {css} from "styled-components";
 import {useFirstRender} from "./useFirstRender";
 import {TypeGroup} from "./TypeGroup";
-
-const getPrevValue = (value: string, isFirstRender: boolean) => {
-    const valueAsNumber = +value;
-    if (isFirstRender) return valueAsNumber;
-
-    if (valueAsNumber === 9) {
-        return 0;
-    } else if (valueAsNumber === 0) {
-        return 1;
-    } else {
-        return valueAsNumber + 1;
-    }
-};
 
 const FlexContainer = styled.div`
     display: flex;
@@ -70,21 +57,23 @@ const RotorGroupHeading = styled.div`
 
 type Props = {
     title: string;
-    value: string;
+    value: {
+        current: number,
+        previous: number,
+    };
     type: TypeGroup;
 }
 
 export function RotorGroup({title, value, type}: Props) {
-    const [slot1, slot2] = useMemo(() => value.split(''), [value])
-
-    const isFirstRender = useFirstRender();
+    const [slot1, slot2] = useMemo(() => String(value.current).padStart(2, "0").split(''), [value.current])
+    const [prev1, prev2] = useMemo(() => String(value.previous).padStart(2, "0").split(''), [value.current])
 
     return (
         <RotorGroupContainer>
             <RotorGroupHeading data-before={title}/>
             <FlexContainer>
-                <Rotor value={slot1} prevValue={getPrevValue(slot1, isFirstRender)}/>
-                <Rotor value={slot2} prevValue={getPrevValue(slot2, isFirstRender)}/>
+                <Rotor value={slot1} prevValue={prev1}/>
+                <Rotor value={slot2} prevValue={prev2}/>
             </FlexContainer>
         </RotorGroupContainer>
     )

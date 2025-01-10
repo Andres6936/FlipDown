@@ -1,4 +1,4 @@
-import {useEffect, useRef} from "react";
+import React, {useEffect, useRef} from "react";
 import styled, {css} from "styled-components";
 import {useFirstRender} from "./useFirstRender";
 
@@ -104,8 +104,8 @@ const RotorLeafFront = styled(RotorLeafView)`
 `
 
 type Props = {
-    value: string;
-    prevValue: number,
+    value: React.ReactNode;
+    prevValue: React.ReactNode,
 }
 
 export function Rotor({value, prevValue}: Props) {

@@ -2,10 +2,38 @@ import {RotorGroup} from "./RotorGroup";
 import {useCallback, useEffect, useState} from "react";
 import styled from "styled-components";
 import {TypeGroup} from "./TypeGroup";
+import {useFirstRender} from "./useFirstRender";
 
-const pad = (value: number) => String(value).padStart(2, '0');
+const MAXIMUM_OF_DAY = 365;
+const MAXIMUM_OF_HOUR = 24;
+const MAXIMUM_OF_MINUTE = 60;
+const MAXIMUM_OF_SECOND = 60;
 
-const getCountdown = (epoch: number) => {
+const clampDay = (value: number) => {
+    if (value >= MAXIMUM_OF_DAY) return MAXIMUM_OF_DAY;
+    if (value < 0) return 0;
+    return value;
+}
+
+const clampHour = (value: number) => {
+    if (value >= MAXIMUM_OF_HOUR) return MAXIMUM_OF_HOUR;
+    if (value < 0) return 0;
+    return value;
+}
+
+const clampMinute = (value: number) => {
+    if (value >= MAXIMUM_OF_MINUTE) return MAXIMUM_OF_MINUTE;
+    if (value < 0) return 0;
+    return value;
+}
+
+const clamSecond = (value: number) => {
+    if (value >= MAXIMUM_OF_SECOND) return MAXIMUM_OF_SECOND;
+    if (value < 0) return 0;
+    return value;
+}
+
+const getCountdown = (epoch: number, isFirstRender: boolean) => {
     // Get time now
     const now = new Date().getTime() / 1000;
 
@@ -28,10 +56,22 @@ const getCountdown = (epoch: number) => {
     const seconds = Math.floor(diff);
 
     return {
-        days,
-        hours,
-        minutes,
-        seconds,
+        days: {
+            current: days,
+            previous: isFirstRender ? days : clampDay(days - 1),
+        },
+        hours: {
+            current: hours,
+            previous: isFirstRender ? hours : clampHour(hours - 1),
+        },
+        minutes: {
+            current: minutes,
+            previous: isFirstRender ? minutes : clampMinute(minutes - 1),
+        },
+        seconds: {
+            current: seconds,
+            previous: isFirstRender ? seconds : clamSecond(seconds - 1),
+        },
     }
 }
 
@@ -56,9 +96,11 @@ type Props = {
 }
 
 export function Flipdown({epoch, ifEnded}: Props) {
+    const isFirstRender = useFirstRender();
+
     const [countdownEnded, setCountdownEnded] = useState<boolean>(false);
     const [callbackCalled, setCallbackCalled] = useState<boolean>(false);
-    const [countdown, setCountdown] = useState(getCountdown(epoch));
+    const [countdown, setCountdown] = useState(getCountdown(epoch, isFirstRender));
 
     // Has the countdown ended?
     const hasCountdownEnded = useCallback(() => {
@@ -88,7 +130,7 @@ export function Flipdown({epoch, ifEnded}: Props) {
             // Has the countdown ended?
             hasCountdownEnded();
             // Trigger the refresh of UI
-            setCountdown(getCountdown(epoch));
+            setCountdown(getCountdown(epoch, isFirstRender));
         }, 1_000)
 
         return () => clearInterval(interval);
@@ -96,10 +138,10 @@ export function Flipdown({epoch, ifEnded}: Props) {
 
     return (
         <Container>
-            <RotorGroup title="Days" type={TypeGroup.Days} value={pad(countdown.days)}/>
-            <RotorGroup title="Hours" type={TypeGroup.Hours} value={pad(countdown.hours)}/>
-            <RotorGroup title="Minutes" type={TypeGroup.Minutes} value={pad(countdown.minutes)}/>
-            <RotorGroup title="Seconds" type={TypeGroup.Seconds} value={pad(countdown.seconds)}/>
+            <RotorGroup title="Days" type={TypeGroup.Days} value={countdown.days}/>
+            <RotorGroup title="Hours" type={TypeGroup.Hours} value={countdown.hours}/>
+            <RotorGroup title="Minutes" type={TypeGroup.Minutes} value={countdown.minutes}/>
+            <RotorGroup title="Seconds" type={TypeGroup.Seconds} value={countdown.seconds}/>
         </Container>
     )
 }
