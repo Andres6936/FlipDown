@@ -3,6 +3,8 @@ import {useCallback, useEffect, useState} from "react";
 import styled from "styled-components";
 import {useFirstRender} from "./useFirstRender";
 
+const ONE_SECOND_IN_MS = 1000;
+
 const MAXIMUM_OF_DAY = 365;
 const MAXIMUM_OF_HOUR = 24;
 const MAXIMUM_OF_MINUTE = 60;
@@ -130,7 +132,7 @@ export function Flipdown({epoch, ifEnded}: Props) {
             hasCountdownEnded();
             // Trigger the refresh of UI
             setCountdown(getCountdown(epoch, isFirstRender));
-        }, 1_000)
+        }, ONE_SECOND_IN_MS)
 
         return () => clearInterval(interval);
     }, []);
