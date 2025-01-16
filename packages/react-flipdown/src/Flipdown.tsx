@@ -81,8 +81,6 @@ const Container = styled.div`
     column-gap: 1.5rem;
     justify-content: center;
     overflow: visible;
-    width: 510px;
-    height: 110px;
     font-family: sans-serif;
     font-weight: bold;
 
@@ -154,10 +152,30 @@ export function Flipdown({epoch, ifEnded, ...props}: Props) {
 
     return (
         <Container>
-            <RotorGroup title={labels.days} value={countdown.days}/>
-            <RotorGroup title={labels.hours} value={countdown.hours}/>
-            <RotorGroup title={labels.minutes} value={countdown.minutes}/>
-            <RotorGroup title={labels.seconds} value={countdown.seconds}/>
+            <RotorGroup
+                title={labels.days}
+                value={countdown.days}
+                showLabels={props.showLabels}
+                showSeparators={props.showSeparators}
+            />
+            <RotorGroup
+                title={labels.hours}
+                value={countdown.hours}
+                showLabels={props.showLabels}
+                showSeparators={props.showSeparators}
+            />
+            <RotorGroup
+                title={labels.minutes}
+                value={countdown.minutes}
+                showLabels={props.showLabels}
+                showSeparators={props.showSeparators}
+            />
+            <RotorGroup
+                title={labels.seconds}
+                value={countdown.seconds}
+                showLabels={props.showLabels}
+                showSeparators={props.showSeparators}
+            />
         </Container>
     )
 }
