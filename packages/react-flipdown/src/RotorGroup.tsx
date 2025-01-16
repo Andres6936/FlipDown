@@ -31,7 +31,11 @@ const SeparatorPoints = css`
     }
 `
 
-const RotorGroupContainer = styled.div`
+type RotorGroupContainerProps = {
+    hiddenSeparators?: boolean,
+}
+
+const RotorGroupContainer = styled.div<RotorGroupContainerProps>`
     position: relative;
     float: left;
     padding-right: 30px;
@@ -40,7 +44,7 @@ const RotorGroupContainer = styled.div`
         padding-right: 0;
     }
 
-    ${SeparatorPoints}
+    ${props => props.hiddenSeparators ? null : SeparatorPoints}
 `
 
 type RotorGroupHeadingProps = {
@@ -69,14 +73,15 @@ type Props = {
         previous: number,
     };
     showLabels?: boolean,
+    showSeparators?: boolean,
 }
 
-export function RotorGroup({title, value, showLabels = true}: Props) {
+export function RotorGroup({title, value, showLabels = true, showSeparators = true}: Props) {
     const [slot1, slot2] = useMemo(() => String(value.current).padStart(2, "0").split(''), [value.current])
     const [prev1, prev2] = useMemo(() => String(value.previous).padStart(2, "0").split(''), [value.previous])
 
     return (
-        <RotorGroupContainer>
+        <RotorGroupContainer hiddenSeparators={!showSeparators}>
             <RotorGroupHeading title={title} hidden={!showLabels}/>
             <FlexContainer>
                 <Rotor value={slot1} prevValue={prev1}/>

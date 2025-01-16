@@ -156,21 +156,25 @@ export function Flipdown({epoch, ifEnded, ...props}: Props) {
                 title={labels.days}
                 value={countdown.days}
                 showLabels={props.showLabels}
+                showSeparators={props.showSeparators}
             />
             <RotorGroup
                 title={labels.hours}
                 value={countdown.hours}
                 showLabels={props.showLabels}
+                showSeparators={props.showSeparators}
             />
             <RotorGroup
                 title={labels.minutes}
                 value={countdown.minutes}
                 showLabels={props.showLabels}
+                showSeparators={props.showSeparators}
             />
             <RotorGroup
                 title={labels.seconds}
                 value={countdown.seconds}
                 showLabels={props.showLabels}
+                showSeparators={props.showSeparators}
             />
         </Container>
     )
