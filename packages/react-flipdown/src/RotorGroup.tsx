@@ -39,7 +39,11 @@ const RotorGroupContainer = styled.div`
     }
 `
 
-const RotorGroupHeading = styled.div`
+type RotorGroupHeadingProps = {
+    title: string,
+}
+
+const RotorGroupHeading = styled.div<RotorGroupHeadingProps>`
     &:before {
         display: block;
         height: 30px;
@@ -49,7 +53,7 @@ const RotorGroupHeading = styled.div`
 
     &:before {
         color: light-dark(#000000, #EEEEEE);
-        content: attr(data-flip-title-before);
+        content: '${props => props.title}';
     }
 `
 
@@ -67,7 +71,7 @@ export function RotorGroup({title, value}: Props) {
 
     return (
         <RotorGroupContainer>
-            <RotorGroupHeading data-flip-title-before={title}/>
+            <RotorGroupHeading title={title}/>
             <FlexContainer>
                 <Rotor value={slot1} prevValue={prev1}/>
                 <Rotor value={slot2} prevValue={prev2}/>
