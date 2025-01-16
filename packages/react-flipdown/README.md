@@ -20,7 +20,7 @@ not required for the application's functionality.
 | labels         | Object  | no       | true    | Custom object with the labels used to represent information for each section (days, hours, minutes, seconds). |
 
 
-## Label props
+### Use of label properties
 
 ```typescript jsx
 import React, {useMemo} from 'react'
