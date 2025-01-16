@@ -28,7 +28,7 @@ jobs:
         run: BASE_PATH="/${{ github.event.repository.name }}" bun run build
 
       - name: Navigate
-        run: cd packages/react-flipdown && bun run storybook:build
+        run: cd packages/react-flipdown && BASE_PATH="/${{ github.event.repository.name }}" bun run storybook:build
 
       - name: Deploy to GH Pages
         uses: peaceiris/actions-gh-pages@v3
