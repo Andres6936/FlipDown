@@ -4,6 +4,24 @@ A lightweight and performant flip styled countdown clock.
 
   ![Showcase](./docs/Showcase.png)
 
+## Usage
+
+### Basic usage
+
+```typescript jsx
+import React from 'react'
+import {Flipdown} from "react-flipdown";
+
+// Unix timestamp (in seconds) to count down to
+const twoDaysFromNow = (new Date().getTime() / 1000) + (86400 * 2) + 1;
+
+function App() {
+    return (
+        <Flipdown epoch={twoDaysFromNow}/>
+    )
+}
+```
+
 ## Properties
 
 | Name           | Type    | Required | Default | Description                                                                                                   |
