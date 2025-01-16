@@ -17,15 +17,7 @@ const Point = css`
     border-radius: 50%;
 `
 
-const RotorGroupContainer = styled.div`
-    position: relative;
-    float: left;
-    padding-right: 30px;
-
-    &:last-child {
-        padding-right: 0;
-    }
-
+const SeparatorPoints = css`
     &:nth-child(n+2):nth-child(-n+3):before {
         ${Point};
         bottom: 20px;
@@ -37,6 +29,18 @@ const RotorGroupContainer = styled.div`
         bottom: 50px;
         background-color: light-dark(#151515, #DDDDDD);
     }
+`
+
+const RotorGroupContainer = styled.div`
+    position: relative;
+    float: left;
+    padding-right: 30px;
+
+    &:last-child {
+        padding-right: 0;
+    }
+
+    ${SeparatorPoints}
 `
 
 type RotorGroupHeadingProps = {
