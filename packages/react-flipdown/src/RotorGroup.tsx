@@ -41,11 +41,12 @@ const RotorGroupContainer = styled.div`
 
 type RotorGroupHeadingProps = {
     title: string,
+    hidden?: boolean,
 }
 
 const RotorGroupHeading = styled.div<RotorGroupHeadingProps>`
     &:before {
-        display: block;
+        display: ${props => props.hidden ? 'none' : 'block'};
         height: 30px;
         line-height: 30px;
         text-align: center;
@@ -63,15 +64,16 @@ type Props = {
         current: number,
         previous: number,
     };
+    showLabels?: boolean,
 }
 
-export function RotorGroup({title, value}: Props) {
+export function RotorGroup({title, value, showLabels = true}: Props) {
     const [slot1, slot2] = useMemo(() => String(value.current).padStart(2, "0").split(''), [value.current])
     const [prev1, prev2] = useMemo(() => String(value.previous).padStart(2, "0").split(''), [value.previous])
 
     return (
         <RotorGroupContainer>
-            <RotorGroupHeading title={title}/>
+            <RotorGroupHeading title={title} hidden={!showLabels}/>
             <FlexContainer>
                 <Rotor value={slot1} prevValue={prev1}/>
                 <Rotor value={slot2} prevValue={prev2}/>
