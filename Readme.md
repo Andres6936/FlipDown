@@ -4,11 +4,6 @@ A lightweight and performant flip styled countdown clock.
 
   ![Showcase](./docs/Showcase.png)
 
-## Monorepo with Tubo
-
-This repository uses [Turbo](https://turbo.build/) to manage the monorepo structure efficiently.
-Turbo helps in task running, caching, and optimizing the build process.
-
 ## Usage
 
 ### Basic usage
@@ -63,6 +58,11 @@ function App() {
 ```
 
 ###### Mock Design and Code Original by [Peter Butcher](https://github.com/PButcher/flipdown)
+
+## Monorepo with Tubo
+
+This repository uses [Turbo](https://turbo.build/) to manage the monorepo structure efficiently.
+Turbo helps in task running, caching, and optimizing the build process.
 
 ## Getting Started
 
