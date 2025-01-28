@@ -84,8 +84,16 @@ const Container = styled.div`
     font-family: sans-serif;
     font-weight: bold;
 
-    :host {
-        color-scheme: light dark;
+    @media (prefers-color-scheme: dark) {
+        & {
+            color-scheme: dark;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        & {
+            color-scheme: light;
+        }
     }
 `
 
